@@ -27,6 +27,9 @@ const CHIPS: Chip[] = [
   { label: "Zeplin", slug: "zeplin", bg: "#FDBD39", fg: "#1a1a1a" },
   { label: "Photoshop", slug: "adobephotoshop", bg: "#31A8FF", fg: "#001e36" },
   { label: "Illustrator", slug: "adobeillustrator", bg: "#FF9A00", fg: "#1a0a00" },
+  { label: "Claude", slug: "claude", bg: "#D97757", fg: "#ffffff" },
+  { label: "GitHub", slug: "github", bg: "#181717", fg: "#ffffff" },
+  { label: "ClickUp", slug: "clickup", bg: "#7B68EE", fg: "#ffffff" },
 ];
 
 const CHIP_RADIUS = 14;
