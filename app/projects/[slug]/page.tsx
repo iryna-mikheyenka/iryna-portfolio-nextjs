@@ -33,6 +33,22 @@ export async function generateMetadata({
   });
 }
 
+function SectionLabel({ children }: { children: ReactNode }): ReactNode {
+  return (
+    <p className="mb-4 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
+      {children}
+    </p>
+  );
+}
+
+function Panel({ children }: { children: ReactNode }): ReactNode {
+  return (
+    <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-4xl border p-6 sm:p-8">
+      {children}
+    </div>
+  );
+}
+
 export default async function ProjectPage({
   params,
 }: PageProps): Promise<ReactNode> {
@@ -90,11 +106,100 @@ export default async function ProjectPage({
             />
           </div>
 
-          <div className="mt-10 flex flex-col gap-5 text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
-            {project.body.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
+          {/* Context */}
+          <div className="mt-12">
+            <SectionLabel>Context</SectionLabel>
+            <p className="text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
+              {project.context}
+            </p>
           </div>
+
+          {/* Problem / Solution */}
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Panel>
+              <p className="mb-3 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
+                Problem
+              </p>
+              <p className="text-[15px] leading-[1.6] tracking-tight text-foreground/80">
+                {project.problem}
+              </p>
+            </Panel>
+            <Panel>
+              <p className="mb-3 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
+                Solution
+              </p>
+              <p className="text-[15px] leading-[1.6] tracking-tight text-foreground/80">
+                {project.solution}
+              </p>
+            </Panel>
+          </div>
+
+          {/* What I did */}
+          <div className="mt-10">
+            <SectionLabel>What I did</SectionLabel>
+            <Panel>
+              <ul className="flex flex-col gap-3">
+                {project.highlights.map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground/80"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Panel>
+          </div>
+
+          {/* Process */}
+          {project.process.length > 0 ? (
+            <div className="mt-10">
+              <SectionLabel>Process</SectionLabel>
+              <Panel>
+                <ol className="flex flex-col gap-2">
+                  {project.process.map((step, i) => (
+                    <li
+                      key={i}
+                      className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-3"
+                    >
+                      <span className="border-foreground/10 text-foreground/60 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border text-[13px] font-semibold">
+                        {i + 1}
+                      </span>
+                      <span className="text-[15px] tracking-tight text-foreground">
+                        {step}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </Panel>
+            </div>
+          ) : null}
+
+          {/* Results */}
+          {project.metrics.length > 0 ? (
+            <div className="mt-10">
+              <SectionLabel>Results</SectionLabel>
+              <div className="grid grid-cols-2 gap-4">
+                {project.metrics.map((metric, i) => (
+                  <div
+                    key={i}
+                    className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-3xl border p-6 text-center"
+                  >
+                    <p className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]">
+                      {metric.value}
+                    </p>
+                    <p className="mt-1 text-[13px] tracking-tight text-foreground/60">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </FadeIn>
       </section>
 

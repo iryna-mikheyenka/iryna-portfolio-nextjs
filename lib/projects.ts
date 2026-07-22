@@ -13,7 +13,13 @@ import type { ComponentType } from "react";
  * screenshots included). Swap in real screenshots from Figma/your work
  * whenever you have them — replace the file at the same path in
  * /public/projects, or update the `image` field to point at a new file.
+ *
+ * `process` and `metrics` are optional — only fill them in with real
+ * numbers/steps you can stand behind. Leave them empty and that section
+ * simply won't render on the project page.
  */
+
+export type Metric = { label: string; value: string };
 
 export type Project = {
   id: string;
@@ -25,7 +31,12 @@ export type Project = {
   imageRatio: number;
   image: string;
   imageAlt: string;
-  body: string[];
+  context: string;
+  problem: string;
+  solution: string;
+  highlights: string[];
+  process: string[];
+  metrics: Metric[];
 };
 
 export const PROJECTS: Project[] = [
@@ -41,10 +52,28 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/states-of-mind.png",
     imageAlt: "States of Mind product dashboard mockup",
-    body: [
+    context:
       "States of Mind is Pink Elephant Group's platform for psychedelic-assisted mental health — expert articles, screenings, a podcast and a private community, built to support people at every stage of their journey.",
-      "I joined early enough to define the product from scratch: its structure, core user journeys and a design system built to scale across mental health, education and provider-discovery products in the same ecosystem.",
-      "I designed the acquisition funnel and onboarding quiz that qualifies and routes new users — a redesign that lifted qualified leads by 16%. I also use AI tools for concept development, visual exploration and rapid prototyping before production.",
+    problem:
+      "There was no existing product to build on — just a mission and an audience that needed to trust a sensitive, often stigmatized topic from the first screen they saw.",
+    solution:
+      "Define the product from 0→1: structure, core user journeys and a design system built to scale across mental health, education and provider-discovery products in the same ecosystem.",
+    highlights: [
+      "Defined information architecture across articles, screenings, tools, podcast and community",
+      "Designed the acquisition funnel and onboarding quiz that qualifies and routes new users",
+      "Built and maintain the shared design system used across the Pink Elephant ecosystem (States of Mind, PsyStandard, Mirari)",
+      "Use AI tools for concept development, visual exploration and rapid prototyping before production",
+    ],
+    process: [
+      "Define product structure and information architecture",
+      "Design core user journeys end to end",
+      "Build the shared design system",
+      "Design and test the acquisition funnel",
+      "Ship, measure, iterate",
+    ],
+    metrics: [
+      { label: "Qualified leads", value: "+16%" },
+      { label: "Ecosystem products on this system", value: "3" },
     ],
   },
   {
@@ -58,11 +87,26 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/psystandard.png",
     imageAlt: "PsyStandard verification dashboard mockup",
-    body: [
+    context:
       "PsyStandard is the verification and standards layer of the Pink Elephant ecosystem — a directory and credentialing platform for psychedelic practitioners.",
-      "I designed the provider discovery, verification, onboarding and assessment flows, translating a rigorous and often opaque credentialing process into something clear and trustworthy for both practitioners and the people vetting them.",
-      "Reworking the internal verification workflow cut the operational cycle time from 7 days to 2 — a change that came out of simplifying the interface around how reviewers actually work, not just adding steps.",
+    problem:
+      "Verifying practitioners was a manual, opaque process that took about 7 days, with no clear visibility for applicants and no streamlined tooling for reviewers.",
+    solution:
+      "Redesign provider discovery, verification, onboarding and assessment flows around how reviewers actually work, not just around the steps in the process.",
+    highlights: [
+      "Mapped the end-to-end verification workflow with the internal review team",
+      "Designed provider discovery and onboarding flows for practitioners applying to the directory",
+      "Simplified the reviewer interface to cut unnecessary steps and clarify decision points",
+      "Shares the same design system as States of Mind and Mirari",
     ],
+    process: [
+      "Map the current verification workflow",
+      "Interview reviewers about friction points",
+      "Redesign discovery and onboarding",
+      "Redesign reviewer tooling",
+      "Roll out and measure cycle time",
+    ],
+    metrics: [{ label: "Verification cycle time", value: "7 days → 2 days" }],
   },
   {
     id: "mirari",
@@ -75,11 +119,25 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/mirari.png",
     imageAlt: "Mirari learning platform mockup",
-    body: [
+    context:
       "Mirari is Pink Elephant Group's education arm — professional training for psychedelic practitioners, built around a 12-week Foundation Programme and an ongoing practitioner community.",
-      "I designed the learning experience end to end: how a clinical, rigorous curriculum becomes a guided, approachable product without losing its credibility.",
-      "Like States of Mind and PsyStandard, Mirari shares design patterns and a component library with the rest of the ecosystem, so practitioners moving between products feel a consistent, trustworthy experience.",
+    problem:
+      "A rigorous, clinical training curriculum risked feeling intimidating or bureaucratic if translated directly into a digital product.",
+    solution:
+      "Design a guided learning experience that keeps the credibility of the curriculum without the friction — clear structure, clear progress, a sense of community alongside the coursework.",
+    highlights: [
+      "Designed the course structure and navigation for a 12-week Foundation Programme",
+      "Designed the practitioner community experience alongside the course",
+      "Reused and extended the shared Pink Elephant design system",
     ],
+    process: [
+      "Understand the curriculum and its constraints",
+      "Structure the learning journey",
+      "Design course and community flows",
+      "Test with early practitioners",
+      "Refine based on feedback",
+    ],
+    metrics: [],
   },
   {
     id: "jggl",
@@ -92,11 +150,26 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/jggl.png",
     imageAlt: "JGGL mobile app mockup",
-    body: [
+    context:
       "JGGL is an AI/ML product for human functional-state analysis — using behavioral data to surface insights about how someone is really doing.",
-      "I designed the web and mobile experience end to end, running user interviews, usability testing, competitor research and data analysis to identify friction points and opportunities.",
-      "Findings fed directly into feature planning and backlog prioritization, helping the team ship the improvements with the highest impact on retention.",
+    problem:
+      "The team had a strong technical concept but limited prior research into which features would actually matter to users.",
+    solution:
+      "Run interviews, usability testing and competitor research, then turn findings directly into prioritized features rather than assumptions.",
+    highlights: [
+      "Conducted user interviews and usability testing to surface friction points",
+      "Ran competitor research and data analysis to identify product opportunities",
+      "Designed web and mobile experiences end to end",
+      "Fed findings directly into feature planning and backlog prioritization",
     ],
+    process: [
+      "User interviews",
+      "Usability testing",
+      "Competitor and data analysis",
+      "Design web and mobile flows",
+      "Feed findings into the roadmap",
+    ],
+    metrics: [],
   },
   {
     id: "qr-charge",
@@ -109,11 +182,26 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/qr-charge.png",
     imageAlt: "QR Charge mobile app mockup",
-    body: [
+    context:
       "QR Charge is a power-bank rental network live across European markets — scan a code, grab a charger, drop it off anywhere in the network.",
-      "I redesigned the core scan, rent, return and wallet flows, along with the error states that make or break trust in a physical-digital product like this.",
-      "I also updated the design system and UI kit to improve consistency and accessibility, and created product and marketing visuals to support acquisition and brand recognition.",
+    problem:
+      "The core scan-rent-return flow had friction and inconsistent error handling across markets, which showed up directly in trust and support load.",
+    solution:
+      "Rebuild the core flows and the UI kit so the product feels reliable and consistent everywhere it operates.",
+    highlights: [
+      "Redesigned scan, rent, return and wallet flows",
+      "Designed and documented error states for edge cases across markets",
+      "Updated the design system and UI kit for consistency, accessibility and scale",
+      "Created product and marketing visuals for acquisition and brand recognition",
     ],
+    process: [
+      "Audit existing flows and error states",
+      "Redesign the core scan-rent-return flow",
+      "Update the UI kit and design system",
+      "Design marketing visuals",
+      "Ship across European markets",
+    ],
+    metrics: [],
   },
   {
     id: "qr-tips",
@@ -126,10 +214,18 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/qr-tips.png",
     imageAlt: "QR Tips app mockup",
-    body: [
+    context:
       "QR Tips extends the QR Charge product family with a lightweight tipping flow, using the same QR-based interaction model people already trust from renting a charger.",
-      "The goal was to keep the experience just as fast and frictionless as scanning a charger — a tip should take seconds, not a checkout flow.",
+    problem:
+      "A tipping feature bolted onto an existing product easily turns into a separate, heavier checkout flow that breaks the speed people expect.",
+    solution:
+      "Reuse the existing QR interaction pattern and keep the tipping flow to as few steps as possible — a tip should take seconds, not a checkout.",
+    highlights: [
+      "Designed a lightweight tipping flow using the existing QR interaction pattern",
+      "Kept the flow visually and structurally consistent with the QR Charge design system",
     ],
+    process: [],
+    metrics: [],
   },
 ];
 
