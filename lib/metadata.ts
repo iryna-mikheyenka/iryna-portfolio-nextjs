@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const siteConfig = {
   name: "Iryna Mikheyenka",
   description:
-    "Senior Product Designer (UX/UI) with 6+ years designing digital products for healthcare, AI, fintech and consumer platforms.",
+    "Product Designer (UX/UI) and enthusiast with 6+ years designing digital products for healthcare, AI, fintech and consumer platforms.",
   url: "https://iryna-mikheyenka.vercel.app",
   ogImage: "/og-image.png",
   creator: "@iri_mikheyenka",

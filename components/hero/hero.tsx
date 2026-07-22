@@ -22,15 +22,18 @@ export function Hero(): ReactNode {
             </p>
 
             <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
+              <span className="block whitespace-nowrap">Product designer,</span>
               <span className="block whitespace-nowrap">
-                Senior product designer,
+                UX/UI enthusiast
+                <span aria-hidden="true" className="ml-1">
+                  ✦
+                </span>
               </span>
-              <span className="block whitespace-nowrap">UX/UI</span>
             </h1>
 
             <p className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
-              Designing complex digital products for healthcare, AI and
-              fintech that feel simple, trustworthy and easy to use.
+              I turn complex healthcare, AI and fintech products into
+              interfaces people actually enjoy using.
             </p>
 
             <HeroCtas />

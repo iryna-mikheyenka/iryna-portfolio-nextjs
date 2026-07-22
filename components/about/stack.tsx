@@ -1,53 +1,52 @@
 "use client";
 
-import { RotateCcw } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  BookOpenText,
+  CheckCircle2,
+  Figma,
+  Framer,
+  Github,
+  Globe,
+  Kanban,
+  Image as ImageIcon,
+  PenTool,
+  RotateCcw,
+  Ruler,
+  Slack,
+  Sparkles,
+} from "lucide-react";
+import { useEffect, useRef, useState, type ComponentType, type ReactNode } from "react";
 
 type Chip = {
   label: string;
-  slug: string;
   bg: string;
   fg: string;
-  iconUrl?: string;
+  Icon: ComponentType<{
+    className?: string;
+    strokeWidth?: number;
+    color?: string;
+  }>;
 };
 
 /**
- * Icon sources fall back through several CDNs before giving up and showing
- * a plain letter badge. This avoids a single flaky CDN (e.g. one that
- * rate-limits or has an outage) breaking a logo permanently in production.
+ * Icons are bundled lucide-react components, not remote images from a logo
+ * CDN — this avoids the site depending on a third-party CDN's uptime to
+ * render the stack correctly (an earlier version used cdn.simpleicons.org
+ * and a few logos silently broke in production).
  */
-function getIconCandidates(chip: Chip): string[] {
-  const candidates: string[] = [];
-  if (chip.iconUrl) candidates.push(chip.iconUrl);
-  candidates.push(`https://cdn.simpleicons.org/${chip.slug}`);
-  candidates.push(
-    `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${chip.slug}.svg`
-  );
-  candidates.push(
-    `https://unpkg.com/simple-icons@latest/icons/${chip.slug}.svg`
-  );
-  return candidates;
-}
-
 const CHIPS: Chip[] = [
-  {
-    label: "Figma",
-    slug: "figma",
-    bg: "#1f1f1f",
-    fg: "#ffffff",
-    iconUrl: "https://svgl.app/library/figma.svg",
-  },
-  { label: "Webflow", slug: "webflow", bg: "#146EF5", fg: "#ffffff" },
-  { label: "Framer", slug: "framer", bg: "#0055FF", fg: "#ffffff" },
-  { label: "Slack", slug: "slack", bg: "#4A154B", fg: "#ffffff" },
-  { label: "Jira", slug: "jira", bg: "#0052CC", fg: "#ffffff" },
-  { label: "Confluence", slug: "confluence", bg: "#172B4D", fg: "#ffffff" },
-  { label: "Zeplin", slug: "zeplin", bg: "#FDBD39", fg: "#1a1a1a" },
-  { label: "Photoshop", slug: "adobephotoshop", bg: "#31A8FF", fg: "#001e36" },
-  { label: "Illustrator", slug: "adobeillustrator", bg: "#FF9A00", fg: "#1a0a00" },
-  { label: "Claude", slug: "claude", bg: "#D97757", fg: "#ffffff" },
-  { label: "GitHub", slug: "github", bg: "#181717", fg: "#ffffff" },
-  { label: "ClickUp", slug: "clickup", bg: "#7B68EE", fg: "#ffffff" },
+  { label: "Figma", bg: "#1f1f1f", fg: "#ffffff", Icon: Figma },
+  { label: "Webflow", bg: "#146EF5", fg: "#ffffff", Icon: Globe },
+  { label: "Framer", bg: "#0055FF", fg: "#ffffff", Icon: Framer },
+  { label: "Slack", bg: "#4A154B", fg: "#ffffff", Icon: Slack },
+  { label: "Jira", bg: "#0052CC", fg: "#ffffff", Icon: Kanban },
+  { label: "Confluence", bg: "#172B4D", fg: "#ffffff", Icon: BookOpenText },
+  { label: "Zeplin", bg: "#FDBD39", fg: "#1a1a1a", Icon: Ruler },
+  { label: "Photoshop", bg: "#31A8FF", fg: "#001e36", Icon: ImageIcon },
+  { label: "Illustrator", bg: "#FF9A00", fg: "#1a0a00", Icon: PenTool },
+  { label: "Claude", bg: "#D97757", fg: "#ffffff", Icon: Sparkles },
+  { label: "GitHub", bg: "#181717", fg: "#ffffff", Icon: Github },
+  { label: "ClickUp", bg: "#7B68EE", fg: "#ffffff", Icon: CheckCircle2 },
 ];
 
 const CHIP_RADIUS = 14;
@@ -287,10 +286,7 @@ export function Stack(): ReactNode {
 }
 
 function ChipPill({ chip }: { chip: Chip }): ReactNode {
-  const candidates = useMemo(() => getIconCandidates(chip), [chip]);
-  const [sourceIndex, setSourceIndex] = useState(0);
-  const exhausted = sourceIndex >= candidates.length;
-
+  const Icon = chip.Icon;
   return (
     <div
       className="dark:ring-1 dark:ring-white/15 inline-flex items-center gap-2 p-1 pr-2 text-[15px] font-medium tracking-tight sm:text-[16px]"
@@ -305,24 +301,7 @@ function ChipPill({ chip }: { chip: Chip }): ReactNode {
         style={{ borderRadius: `${ICON_RADIUS}px` }}
         aria-hidden="true"
       >
-        {exhausted ? (
-          <span
-            className="text-[13px] font-semibold"
-            style={{ color: chip.bg }}
-          >
-            {chip.label.charAt(0)}
-          </span>
-        ) : (
-          <img
-            src={candidates[sourceIndex]}
-            alt=""
-            width={18}
-            height={18}
-            className="h-5 w-5"
-            draggable={false}
-            onError={() => setSourceIndex((i) => i + 1)}
-          />
-        )}
+        <Icon className="h-5 w-5" strokeWidth={2} color={chip.bg} />
       </span>
       <span>{chip.label}</span>
     </div>
