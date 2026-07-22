@@ -1,112 +1,10 @@
-import {
-  ArrowRight,
-  BatteryCharging,
-  Cpu,
-  GraduationCap,
-  HandCoins,
-  HeartPulse,
-  ShieldCheck,
-} from "lucide-react";
-import type { ComponentType, ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { FadeIn } from "@/components/ui/motion-primitives";
-
-/**
- * Project imagery below is stylized abstract mockups (no real product
- * screenshots included). Swap in real screenshots from Figma/your work
- * whenever you have them — drop images into /public/projects and update
- * the `image` field below.
- */
-
-type Project = {
-  id: string;
-  icon: ComponentType<{ className?: string }>;
-  iconLabel: string;
-  title: string;
-  description: string;
-  meta: string;
-  imageRatio: number;
-  image: string;
-  imageAlt: string;
-};
-
-const PROJECTS: Project[] = [
-  {
-    id: "states-of-mind",
-    icon: HeartPulse,
-    iconLabel: "States of Mind",
-    title:
-      "A media and community platform for psychedelic-assisted mental health, built 0→1.",
-    description:
-      "Defined the product from scratch — structure, user journeys and a scalable design system — spanning expert articles, screenings, podcast and community. A redesigned acquisition funnel lifted qualified leads by 16%.",
-    meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
-    imageRatio: 1024 / 768,
-    image: "/projects/states-of-mind.png",
-    imageAlt: "States of Mind product dashboard mockup",
-  },
-  {
-    id: "psystandard",
-    icon: ShieldCheck,
-    iconLabel: "PsyStandard",
-    title: "A verification and standards platform for psychedelic practitioners.",
-    description:
-      "Designed provider discovery, verification, onboarding and assessment flows to make a complex credentialing process clearer and more trustworthy. The reworked verification workflow cut cycle time from 7 days to 2.",
-    meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
-    imageRatio: 1024 / 768,
-    image: "/projects/psystandard.png",
-    imageAlt: "PsyStandard verification dashboard mockup",
-  },
-  {
-    id: "mirari",
-    icon: GraduationCap,
-    iconLabel: "Mirari",
-    title: "Professional education for psychedelic practitioners across Europe.",
-    description:
-      "Designed the learning experience for a 12-week Foundation Programme and practitioner community, turning a rigorous clinical curriculum into a clear, guided product.",
-    meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
-    imageRatio: 1024 / 768,
-    image: "/projects/mirari.png",
-    imageAlt: "Mirari learning platform mockup",
-  },
-  {
-    id: "jggl",
-    icon: Cpu,
-    iconLabel: "JGGL",
-    title: "An AI/ML product for human functional-state analysis.",
-    description:
-      "Designed web and mobile experiences end to end, running interviews, usability testing and competitor research that fed straight into the roadmap.",
-    meta: "Product Designer, X Labs · 2024",
-    imageRatio: 1024 / 768,
-    image: "/projects/jggl.png",
-    imageAlt: "JGGL mobile app mockup",
-  },
-  {
-    id: "qr-charge",
-    icon: BatteryCharging,
-    iconLabel: "QR Charge",
-    title: "A power-bank rental app and website live across Europe.",
-    description:
-      "Rebuilt the core scan, rent, return and wallet flows, and updated the UI kit for consistency, accessibility and scale.",
-    meta: "Product Designer, QR Charge · 2023–2024",
-    imageRatio: 1024 / 768,
-    image: "/projects/qr-charge.png",
-    imageAlt: "QR Charge mobile app mockup",
-  },
-  {
-    id: "qr-tips",
-    icon: HandCoins,
-    iconLabel: "QR Tips",
-    title: "A tipping feature extending the QR Charge product family.",
-    description:
-      "Designed a lightweight, trust-building tipping flow that plugs into the same QR-based interaction model as QR Charge.",
-    meta: "Product Designer, QR Charge · 2023–2024",
-    imageRatio: 1024 / 768,
-    image: "/projects/qr-tips.png",
-    imageAlt: "QR Tips app mockup",
-  },
-];
+import { PROJECTS, type Project } from "@/lib/projects";
 
 export type ProjectsProps = {
   withHeadline?: boolean;
@@ -172,7 +70,10 @@ function ProjectCard({
       delay={Math.min(index * 0.06, 0.3)}
       className="mb-6 break-inside-avoid md:mb-7"
     >
-      <article className="project-card flex cursor-pointer flex-col gap-4 rounded-3xl border border-foreground/8 bg-background p-3 sm:p-3.5">
+      <Link
+        href={`/projects/${project.id}`}
+        className="focus-ring project-card flex cursor-pointer flex-col gap-4 rounded-3xl border border-foreground/8 bg-background p-3 sm:p-3.5"
+      >
         <header className="flex items-center gap-2.5 px-1 pt-2">
           <span className="border-foreground/10 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border bg-background">
             <Icon className="h-3.5 w-3.5 text-foreground" aria-hidden="true" />
@@ -210,7 +111,7 @@ function ProjectCard({
         <p className="px-1 pb-2 text-[12px] tracking-tight text-foreground/50">
           {project.meta}
         </p>
-      </article>
+      </Link>
     </FadeIn>
   );
 }
