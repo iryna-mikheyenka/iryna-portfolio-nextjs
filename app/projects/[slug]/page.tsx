@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -88,23 +88,66 @@ export default async function ProjectPage({
           <h1 className="font-serif text-[2rem] font-medium leading-[1.1] tracking-tight text-foreground sm:text-[2.5rem]">
             {project.title}
           </h1>
-          <p className="mt-4 text-[13px] tracking-tight text-foreground/50">
-            {project.meta}
-          </p>
-
-          <div
-            className="ring-foreground/5 relative mt-10 w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
-            style={{ aspectRatio: project.imageRatio }}
-          >
-            <Image
-              src={project.image}
-              alt={project.imageAlt}
-              fill
-              sizes="(min-width: 1024px) 640px, 100vw"
-              className="object-cover"
-              priority
-            />
+          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+            <p className="text-[13px] tracking-tight text-foreground/50">
+              {project.meta}
+            </p>
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="focus-ring group border-foreground/10 inline-flex items-center gap-1.5 rounded-full border bg-background px-3 py-1 text-[12px] font-medium tracking-tight text-foreground/75 transition-colors hover:text-foreground"
+              >
+                Visit live site
+                <ArrowUpRight
+                  className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </a>
+            ) : null}
           </div>
+
+          {project.gallery.length > 1 ? (
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4">
+              {project.gallery.map((img, i) => (
+                <div
+                  key={img.src}
+                  className={`ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1 ${
+                    i === 0 ? "col-span-2" : ""
+                  }`}
+                  style={{ aspectRatio: i === 0 ? project.imageRatio : 4 / 3 }}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes={
+                      i === 0
+                        ? "(min-width: 1024px) 640px, 100vw"
+                        : "(min-width: 1024px) 320px, 50vw"
+                    }
+                    className="object-cover"
+                    priority={i === 0}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              className="ring-foreground/5 relative mt-10 w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
+              style={{ aspectRatio: project.imageRatio }}
+            >
+              <Image
+                src={project.image}
+                alt={project.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
 
           {/* Context */}
           <div className="mt-12">

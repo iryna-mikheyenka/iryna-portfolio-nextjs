@@ -9,14 +9,12 @@ import {
 import type { ComponentType } from "react";
 
 /**
- * Project imagery below is stylized abstract mockups (no real product
- * screenshots included). Swap in real screenshots from Figma/your work
- * whenever you have them — replace the file at the same path in
- * /public/projects, or update the `image` field to point at a new file.
- *
  * `process` and `metrics` are optional — only fill them in with real
  * numbers/steps you can stand behind. Leave them empty and that section
  * simply won't render on the project page.
+ *
+ * `gallery` holds real product screenshots. `liveUrl` links out to the
+ * live product when one exists publicly.
  */
 
 export type Metric = { label: string; value: string };
@@ -31,6 +29,8 @@ export type Project = {
   imageRatio: number;
   image: string;
   imageAlt: string;
+  gallery: { src: string; alt: string }[];
+  liveUrl?: string;
   context: string;
   problem: string;
   solution: string;
@@ -45,28 +45,44 @@ export const PROJECTS: Project[] = [
     icon: HeartPulse,
     iconLabel: "States of Mind",
     title:
-      "A media and community platform for psychedelic-assisted mental health, built 0→1.",
+      "A mental health self-discovery and guidance platform, built 0→1.",
     description:
-      "Defined the product from scratch — structure, user journeys and a scalable design system — spanning expert articles, screenings, podcast and community. A redesigned acquisition funnel lifted qualified leads by 16%.",
+      "Built the product from 0→1 and continue developing its structure, user journeys, interface logic, content experience and scalable design patterns. A redesigned acquisition funnel lifted qualified leads by 16%.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
-    image: "/projects/states-of-mind.png",
-    imageAlt: "States of Mind product dashboard mockup",
+    image: "/projects/states-of-mind-1.jpg",
+    imageAlt: "States of Mind resources and tools screen on mobile",
+    gallery: [
+      {
+        src: "/projects/states-of-mind-1.jpg",
+        alt: "States of Mind resources and tools screen on mobile",
+      },
+      {
+        src: "/projects/states-of-mind-2.jpg",
+        alt: "States of Mind homepage on tablet",
+      },
+      {
+        src: "/projects/states-of-mind-3.jpg",
+        alt: "States of Mind depression screening result page",
+      },
+    ],
+    liveUrl: "https://statesofmind.com",
     context:
-      "States of Mind is Pink Elephant Group's platform for psychedelic-assisted mental health — expert articles, screenings, a podcast and a private community, built to support people at every stage of their journey.",
+      "States of Mind is a mental health self-discovery and guidance platform. I built the product from 0→1 and continue developing its structure, user journeys, interface logic, content experience and scalable design patterns.",
     problem:
-      "There was no existing product to build on — just a mission and an audience that needed to trust a sensitive, often stigmatized topic from the first screen they saw.",
+      "There was no existing product to build on — just a mission to create a clear, supportive digital platform that helps users understand their mental state, explore psychological topics, complete self-assessments and find relevant next steps.",
     solution:
-      "Define the product from 0→1: structure, core user journeys and a design system built to scale across mental health, education and provider-discovery products in the same ecosystem.",
+      "Design a product structure that moves users from uncertainty to understanding: clear entry points for awareness, non-clinical quiz and screening flows for assessment, result pages and next-step guidance, and article/guide layouts that make complex topics easier to navigate.",
     highlights: [
-      "Defined information architecture across articles, screenings, tools, podcast and community",
-      "Designed the acquisition funnel and onboarding quiz that qualifies and routes new users",
-      "Built and maintain the shared design system used across the Pink Elephant ecosystem (States of Mind, PsyStandard, Mirari)",
-      "Use AI tools for concept development, visual exploration and rapid prototyping before production",
+      "Defined product architecture, UX flows and information architecture from scratch",
+      "Designed quiz logic and assessment result pages for sensitive, non-clinical self-screening",
+      "Designed the acquisition funnel and onboarding that qualifies and routes new users",
+      "Built and maintain the shared design system used across States of Mind, PsyStandard and Mirari",
+      "Use AI-assisted visual exploration for concept development and rapid prototyping",
     ],
     process: [
       "Define product structure and information architecture",
-      "Design core user journeys end to end",
+      "Design awareness, assessment, guidance and content flows",
       "Build the shared design system",
       "Design and test the acquisition funnel",
       "Ship, measure, iterate",
@@ -80,30 +96,41 @@ export const PROJECTS: Project[] = [
     id: "psystandard",
     icon: ShieldCheck,
     iconLabel: "PsyStandard",
-    title: "A verification and standards platform for psychedelic practitioners.",
+    title: "Trust infrastructure for the progressive mental health field.",
     description:
-      "Designed provider discovery, verification, onboarding and assessment flows to make a complex credentialing process clearer and more trustworthy. The reworked verification workflow cut cycle time from 7 days to 2.",
+      "Designed provider profiles, verification logic, trust blocks and methodology pages to make a complex credentialing process clearer and more trustworthy. The reworked verification workflow cut cycle time from 7 days to 2.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
-    image: "/projects/psystandard.png",
-    imageAlt: "PsyStandard verification dashboard mockup",
+    image: "/projects/psystandard-1.jpg",
+    imageAlt: "PsyStandard 'what verified means' page on laptop",
+    gallery: [
+      {
+        src: "/projects/psystandard-1.jpg",
+        alt: "PsyStandard 'what verified means' page on laptop",
+      },
+      {
+        src: "/projects/psystandard-2.jpg",
+        alt: "PsyStandard coaches directory page on laptop",
+      },
+    ],
+    liveUrl: "https://psystandard.com",
     context:
-      "PsyStandard is the verification and standards layer of the Pink Elephant ecosystem — a directory and credentialing platform for psychedelic practitioners.",
+      "PsyStandard is trust infrastructure for the progressive mental health field — a platform that helps users evaluate providers, understand standards and navigate professional information with more confidence.",
     problem:
-      "Verifying practitioners was a manual, opaque process that took about 7 days, with no clear visibility for applicants and no streamlined tooling for reviewers.",
+      "Verifying practitioners was a manual, opaque process that took about 7 days, with no clear credibility signals for applicants and no streamlined tooling for reviewers.",
     solution:
-      "Redesign provider discovery, verification, onboarding and assessment flows around how reviewers actually work, not just around the steps in the process.",
+      "Design provider profiles, verification logic and trust blocks around credibility, structure, standards and action: verified profiles and credentials, clear provider pages and pricing, methodology and verification-logic blocks, and clear CTAs to contact, apply or claim a listing.",
     highlights: [
-      "Mapped the end-to-end verification workflow with the internal review team",
-      "Designed provider discovery and onboarding flows for practitioners applying to the directory",
-      "Simplified the reviewer interface to cut unnecessary steps and clarify decision points",
+      "Designed provider profiles, verification logic and trust blocks",
+      "Designed methodology pages and content structure for standards and credentialing",
+      "Simplified the reviewer workflow to cut unnecessary steps and clarify decision points",
       "Shares the same design system as States of Mind and Mirari",
     ],
     process: [
       "Map the current verification workflow",
-      "Interview reviewers about friction points",
-      "Redesign discovery and onboarding",
-      "Redesign reviewer tooling",
+      "Design provider profiles and trust blocks",
+      "Design methodology and standards pages",
+      "Design reviewer tooling",
       "Roll out and measure cycle time",
     ],
     metrics: [{ label: "Verification cycle time", value: "7 days → 2 days" }],
@@ -112,29 +139,45 @@ export const PROJECTS: Project[] = [
     id: "mirari",
     icon: GraduationCap,
     iconLabel: "Mirari",
-    title: "Professional education for psychedelic practitioners across Europe.",
+    title: "A structured learning experience for progressive mental health education.",
     description:
-      "Designed the learning experience for a 12-week Foundation Programme and practitioner community, turning a rigorous clinical curriculum into a clear, guided product.",
+      "Designed the learning experience, landing pages, program structure, application flow and visual system for a progressive mental health education product.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
-    image: "/projects/mirari.png",
-    imageAlt: "Mirari learning platform mockup",
+    image: "/projects/mirari-1.jpg",
+    imageAlt: "Mirari Foundation Programme overview on mobile",
+    gallery: [
+      {
+        src: "/projects/mirari-1.jpg",
+        alt: "Mirari Foundation Programme overview on mobile",
+      },
+      {
+        src: "/projects/mirari-2.jpg",
+        alt: "Mirari 'Professional Excellence for the Psychedelic Practitioner' homepage on laptop",
+      },
+      {
+        src: "/projects/mirari-3.jpg",
+        alt: "Mirari 'What you'll learn' webinar page on laptop",
+      },
+    ],
+    liveUrl: "https://mirari.academy",
     context:
-      "Mirari is Pink Elephant Group's education arm — professional training for psychedelic practitioners, built around a 12-week Foundation Programme and an ongoing practitioner community.",
+      "Mirari is a progressive mental health education product. I designed the learning experience, landing pages, program structure, application flow and visual system.",
     problem:
-      "A rigorous, clinical training curriculum risked feeling intimidating or bureaucratic if translated directly into a digital product.",
+      "Complex educational programs risked feeling intimidating or hard to evaluate if the curriculum, faculty and pricing weren't translated into a clear digital structure.",
     solution:
-      "Design a guided learning experience that keeps the credibility of the curriculum without the friction — clear structure, clear progress, a sense of community alongside the coursework.",
+      "Make the program feel clear, credible and easy to explore: structured curriculum blocks and learning outcomes, faculty and methodology for trust, clear pricing and format for decision-making, and a simple path from exploration to application.",
     highlights: [
-      "Designed the course structure and navigation for a 12-week Foundation Programme",
-      "Designed the practitioner community experience alongside the course",
+      "Designed landing pages and program cards for a structured curriculum",
+      "Designed the application flow from program exploration to submission",
+      "Designed trust elements — faculty, methodology, science-backed positioning",
       "Reused and extended the shared Pink Elephant design system",
     ],
     process: [
       "Understand the curriculum and its constraints",
-      "Structure the learning journey",
-      "Design course and community flows",
-      "Test with early practitioners",
+      "Structure the learning journey and program cards",
+      "Design trust and decision-making blocks",
+      "Design the application flow",
       "Refine based on feedback",
     ],
     metrics: [],
@@ -143,31 +186,40 @@ export const PROJECTS: Project[] = [
     id: "jggl",
     icon: Cpu,
     iconLabel: "JGGL",
-    title: "An AI/ML product for human functional-state analysis.",
+    title: "A social media experience for AI-generated content and digital creators.",
     description:
-      "Designed web and mobile experiences end to end, running interviews, usability testing and competitor research that fed straight into the roadmap.",
+      "Designed a mobile-first product that makes AI-generated content easy to explore, create and interact with — AI artist creation flows, feed experience, user journeys and interface logic, with usability testing feeding straight into iteration.",
     meta: "Product Designer, X Labs · 2024",
     imageRatio: 1024 / 768,
-    image: "/projects/jggl.png",
-    imageAlt: "JGGL mobile app mockup",
+    image: "/projects/jggl-1.jpg",
+    imageAlt: "JGGL AI-generated content post on mobile",
+    gallery: [
+      { src: "/projects/jggl-1.jpg", alt: "JGGL AI-generated content post on mobile" },
+      { src: "/projects/jggl-2.jpg", alt: "JGGL feed post, held in hand" },
+      { src: "/projects/jggl-3.jpg", alt: "JGGL new publication / content creation screen" },
+      { src: "/projects/jggl-4.jpg", alt: "JGGL feed view grid of AI-generated artist content" },
+      { src: "/projects/jggl-5.jpg", alt: "JGGL app home screen with favorites and tracks" },
+      { src: "/projects/jggl-6.jpg", alt: "JGGL new track publication screen" },
+    ],
+    liveUrl: "https://jggl.ai/",
     context:
-      "JGGL is an AI/ML product for human functional-state analysis — using behavioral data to surface insights about how someone is really doing.",
+      "JGGL (X Labs) is a mobile-first social media experience for AI-generated content and digital creator interaction, making it easy to explore, create and interact with AI-generated media.",
     problem:
-      "The team had a strong technical concept but limited prior research into which features would actually matter to users.",
+      "The team had a strong technical concept — AI-generated content and AI-powered artist profiles — but needed the interaction model to feel as familiar and fast as any social feed.",
     solution:
-      "Run interviews, usability testing and competitor research, then turn findings directly into prioritized features rather than assumptions.",
+      "Design AI artist creation flows and onboarding logic, a dynamic media feed built for browsing and continuous discovery, and like/save/share/profile interaction patterns adapted from social media, then iterate based on usability testing and user behavior.",
     highlights: [
-      "Conducted user interviews and usability testing to surface friction points",
-      "Ran competitor research and data analysis to identify product opportunities",
-      "Designed web and mobile experiences end to end",
-      "Fed findings directly into feature planning and backlog prioritization",
+      "Designed the AI artist creation flow and onboarding for digital creator profiles",
+      "Structured the media feed for browsing, engagement and continuous discovery",
+      "Designed like, save, share and profile interaction patterns",
+      "Ran usability testing and fed findings directly into product iteration",
     ],
     process: [
-      "User interviews",
+      "User interviews and competitor research",
+      "Design AI artist creation and onboarding flow",
+      "Design the media feed and interaction patterns",
       "Usability testing",
-      "Competitor and data analysis",
-      "Design web and mobile flows",
-      "Feed findings into the roadmap",
+      "Iterate based on findings",
     ],
     metrics: [],
   },
@@ -177,29 +229,38 @@ export const PROJECTS: Project[] = [
     iconLabel: "QR Charge",
     title: "A power-bank rental app and website live across Europe.",
     description:
-      "Rebuilt the core scan, rent, return and wallet flows, and updated the UI kit for consistency, accessibility and scale.",
+      "Designed a clear mobile app and website experience for renting power banks — scan, rent, wallet and return flows, error states, an updated UI kit and marketing visuals for acquisition.",
     meta: "Product Designer, QR Charge · 2023–2024",
     imageRatio: 1024 / 768,
-    image: "/projects/qr-charge.png",
-    imageAlt: "QR Charge mobile app mockup",
+    image: "/projects/qr-charge-1.jpg",
+    imageAlt: "QR Charge onboarding welcome screen",
+    gallery: [
+      { src: "/projects/qr-charge-1.jpg", alt: "QR Charge onboarding welcome screen" },
+      { src: "/projects/qr-charge-2.jpg", alt: "QR Charge active rental map screen" },
+      { src: "/projects/qr-charge-3.jpg", alt: "QR Charge rental activated / ejection screen" },
+      { src: "/projects/qr-charge-4.jpg", alt: "QR Charge scan QR code screen" },
+      { src: "/projects/qr-charge-5.jpg", alt: "QR Charge 'how to return a power bank' instructions" },
+    ],
+    liveUrl: "https://qrcharge.eu/",
     context:
-      "QR Charge is a power-bank rental network live across European markets — scan a code, grab a charger, drop it off anywhere in the network.",
+      "QR Charge is a power-bank rental network live across European markets, with a mobile app and website built for quick, everyday urban use.",
     problem:
-      "The core scan-rent-return flow had friction and inconsistent error handling across markets, which showed up directly in trust and support load.",
+      "The scan-rent-return flow needed to work with zero friction and handle edge cases — failed scans, unavailable devices, payment issues — without confusing or losing users.",
     solution:
-      "Rebuild the core flows and the UI kit so the product feels reliable and consistent everywhere it operates.",
+      "Design a mobile-first rental flow around scan, rent, wallet and return: a clear scanning entry point, simple rental confirmation with price and time, wallet and active-rental state in one place, and clear return instructions and error handling.",
     highlights: [
-      "Redesigned scan, rent, return and wallet flows",
-      "Designed and documented error states for edge cases across markets",
-      "Updated the design system and UI kit for consistency, accessibility and scale",
+      "Redesigned scan, rent, active rental and return journeys",
+      "Designed wallet flows covering balance, payment and bonuses",
+      "Created clearer error states for failed scans, unavailable devices and payment issues",
+      "Updated the UI kit and visual patterns for consistency across markets",
       "Created product and marketing visuals for acquisition and brand recognition",
     ],
     process: [
       "Audit existing flows and error states",
       "Redesign the core scan-rent-return flow",
+      "Design wallet and payment flows",
       "Update the UI kit and design system",
-      "Design marketing visuals",
-      "Ship across European markets",
+      "Design marketing visuals and ship across markets",
     ],
     metrics: [],
   },
@@ -214,6 +275,8 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/qr-tips.png",
     imageAlt: "QR Tips app mockup",
+    gallery: [{ src: "/projects/qr-tips.png", alt: "QR Tips app mockup" }],
+    liveUrl: "https://qrtips.ch/",
     context:
       "QR Tips extends the QR Charge product family with a lightweight tipping flow, using the same QR-based interaction model people already trust from renting a charger.",
     problem:
