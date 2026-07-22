@@ -1,7 +1,7 @@
 "use client";
 
 import { RotateCcw } from "lucide-react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 type Chip = {
   label: string;
@@ -10,6 +10,24 @@ type Chip = {
   fg: string;
   iconUrl?: string;
 };
+
+/**
+ * Icon sources fall back through several CDNs before giving up and showing
+ * a plain letter badge. This avoids a single flaky CDN (e.g. one that
+ * rate-limits or has an outage) breaking a logo permanently in production.
+ */
+function getIconCandidates(chip: Chip): string[] {
+  const candidates: string[] = [];
+  if (chip.iconUrl) candidates.push(chip.iconUrl);
+  candidates.push(`https://cdn.simpleicons.org/${chip.slug}`);
+  candidates.push(
+    `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${chip.slug}.svg`
+  );
+  candidates.push(
+    `https://unpkg.com/simple-icons@latest/icons/${chip.slug}.svg`
+  );
+  return candidates;
+}
 
 const CHIPS: Chip[] = [
   {
@@ -269,6 +287,10 @@ export function Stack(): ReactNode {
 }
 
 function ChipPill({ chip }: { chip: Chip }): ReactNode {
+  const candidates = useMemo(() => getIconCandidates(chip), [chip]);
+  const [sourceIndex, setSourceIndex] = useState(0);
+  const exhausted = sourceIndex >= candidates.length;
+
   return (
     <div
       className="dark:ring-1 dark:ring-white/15 inline-flex items-center gap-2 p-1 pr-2 text-[15px] font-medium tracking-tight sm:text-[16px]"
@@ -283,14 +305,24 @@ function ChipPill({ chip }: { chip: Chip }): ReactNode {
         style={{ borderRadius: `${ICON_RADIUS}px` }}
         aria-hidden="true"
       >
-        <img
-          src={chip.iconUrl ?? `https://cdn.simpleicons.org/${chip.slug}`}
-          alt=""
-          width={18}
-          height={18}
-          className="h-5 w-5"
-          draggable={false}
-        />
+        {exhausted ? (
+          <span
+            className="text-[13px] font-semibold"
+            style={{ color: chip.bg }}
+          >
+            {chip.label.charAt(0)}
+          </span>
+        ) : (
+          <img
+            src={candidates[sourceIndex]}
+            alt=""
+            width={18}
+            height={18}
+            className="h-5 w-5"
+            draggable={false}
+            onError={() => setSourceIndex((i) => i + 1)}
+          />
+        )}
       </span>
       <span>{chip.label}</span>
     </div>
