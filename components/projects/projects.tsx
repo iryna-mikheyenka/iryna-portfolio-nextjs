@@ -1,11 +1,11 @@
 import {
   ArrowRight,
   BatteryCharging,
-  Briefcase,
-  Building2,
   Cpu,
+  GraduationCap,
+  HandCoins,
   HeartPulse,
-  Palette,
+  ShieldCheck,
 } from "lucide-react";
 import type { ComponentType, ReactNode } from "react";
 import Image from "next/image";
@@ -38,13 +38,37 @@ const PROJECTS: Project[] = [
     icon: HeartPulse,
     iconLabel: "States of Mind",
     title:
-      "A mental-health platform built 0→1 — structure, user journeys and a scalable design system.",
+      "A media and community platform for psychedelic-assisted mental health, built 0→1.",
     description:
-      "I defined the product from scratch and designed provider discovery, verification, onboarding and assessment flows. A redesigned funnel lifted qualified leads by 16%, and a reworked verification workflow cut cycle time from 7 days to 2.",
+      "Defined the product from scratch — structure, user journeys and a scalable design system — spanning expert articles, screenings, podcast and community. A redesigned acquisition funnel lifted qualified leads by 16%.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/states-of-mind.png",
     imageAlt: "States of Mind product dashboard mockup",
+  },
+  {
+    id: "psystandard",
+    icon: ShieldCheck,
+    iconLabel: "PsyStandard",
+    title: "A verification and standards platform for psychedelic practitioners.",
+    description:
+      "Designed provider discovery, verification, onboarding and assessment flows to make a complex credentialing process clearer and more trustworthy. The reworked verification workflow cut cycle time from 7 days to 2.",
+    meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
+    imageRatio: 1024 / 768,
+    image: "/projects/psystandard.png",
+    imageAlt: "PsyStandard verification dashboard mockup",
+  },
+  {
+    id: "mirari",
+    icon: GraduationCap,
+    iconLabel: "Mirari",
+    title: "Professional education for psychedelic practitioners across Europe.",
+    description:
+      "Designed the learning experience for a 12-week Foundation Programme and practitioner community, turning a rigorous clinical curriculum into a clear, guided product.",
+    meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
+    imageRatio: 1024 / 768,
+    image: "/projects/mirari.png",
+    imageAlt: "Mirari learning platform mockup",
   },
   {
     id: "jggl",
@@ -71,41 +95,16 @@ const PROJECTS: Project[] = [
     imageAlt: "QR Charge mobile app mockup",
   },
   {
-    id: "duck-design",
-    icon: Palette,
-    iconLabel: "Duck.design",
-    title:
-      "Navigation and information-architecture redesigns for Momoboard, Conduit and Clevmate.",
+    id: "qr-tips",
+    icon: HandCoins,
+    iconLabel: "QR Tips",
+    title: "A tipping feature extending the QR Charge product family.",
     description:
-      "Reworked IA and content hierarchy for international SaaS and community platforms, including localizing UX for Korean users on Momoboard.",
-    meta: "UX/UI Designer, Duck.design · 2022–2023",
+      "Designed a lightweight, trust-building tipping flow that plugs into the same QR-based interaction model as QR Charge.",
+    meta: "Product Designer, QR Charge · 2023–2024",
     imageRatio: 1024 / 768,
-    image: "/projects/duck-design.png",
-    imageAlt: "Duck.design project cards mockup",
-  },
-  {
-    id: "senla",
-    icon: Building2,
-    iconLabel: "SENLA",
-    title: "Enterprise and insurance dashboards for daily operational use.",
-    description:
-      "Simplified dense, data-heavy screens, map interactions and supervisor workflows for internal enterprise tools.",
-    meta: "UX/UI Designer, SENLA · 2020–2021",
-    imageRatio: 1024 / 768,
-    image: "/projects/senla.png",
-    imageAlt: "SENLA enterprise dashboard mockup",
-  },
-  {
-    id: "freelance",
-    icon: Briefcase,
-    iconLabel: "Freelance",
-    title: "Full design cycles for startups across fintech and e-commerce.",
-    description:
-      "Research, user flows, wireframes, high-fidelity UI and developer handoff for startups and small businesses across multiple industries.",
-    meta: "Freelance UX/UI Designer · 2019–2022",
-    imageRatio: 1024 / 768,
-    image: "/projects/freelance.png",
-    imageAlt: "Freelance project cards mockup",
+    image: "/projects/qr-tips.png",
+    imageAlt: "QR Tips app mockup",
   },
 ];
 
