@@ -5,8 +5,8 @@ import { Stack } from "@/components/about/stack";
 import { Stats } from "@/components/about/stats";
 import { Testimonials } from "@/components/about/testimonials";
 import { ContactCard } from "@/components/contact/contact-card";
-import { Hero } from "@/components/hero/hero";
-import { WorkList } from "@/components/projects/work-list";
+import { WorkHeroPanel } from "@/components/hero/work-hero-panel";
+import { WorkGrid } from "@/components/projects/work-grid";
 import { FadeIn } from "@/components/ui/motion-primitives";
 import { createMetadata, siteConfig } from "@/lib/metadata";
 import type { Metadata } from "next";
@@ -21,7 +21,15 @@ export const metadata: Metadata = createMetadata({
 export default function HomePage(): ReactNode {
   return (
     <main id="main-content" className="flex flex-1 flex-col">
-      <Hero />
+      <section
+        id="work"
+        className="scroll-mt-28 mx-auto w-full max-w-275 px-6 pt-44 pb-20 sm:px-10 sm:pt-56 sm:pb-28"
+      >
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[340px_1fr] md:gap-12 lg:gap-16">
+          <WorkHeroPanel />
+          <WorkGrid />
+        </div>
+      </section>
 
       <section id="about" className="scroll-mt-28 w-full">
         <div className="mx-auto w-full max-w-160 px-6 sm:px-10">
@@ -72,26 +80,6 @@ export default function HomePage(): ReactNode {
         <FadeIn delay={0.1}>
           <Testimonials />
         </FadeIn>
-      </section>
-
-      <section
-        id="work"
-        className="scroll-mt-28 mx-auto mt-24 w-full max-w-275 px-6 sm:mt-32 sm:px-10"
-      >
-        <FadeIn className="flex flex-col items-center gap-5 pb-10 text-center sm:pb-14">
-          <p className="text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
-            Work
-          </p>
-          <h2 className="font-serif text-[2.25rem] font-medium leading-[1.1] tracking-tight text-foreground sm:text-[2.75rem]">
-            Selected projects.
-          </h2>
-          <p className="max-w-[38ch] text-[17px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[18px]">
-            Product design work across mental health, AI and consumer
-            platforms.
-          </p>
-        </FadeIn>
-
-        <WorkList />
       </section>
 
       <ContactCard />

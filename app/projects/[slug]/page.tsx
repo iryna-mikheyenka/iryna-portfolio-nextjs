@@ -7,8 +7,11 @@ import type { ReactNode } from "react";
 
 import { ContactCard } from "@/components/contact/contact-card";
 import { FadeIn } from "@/components/ui/motion-primitives";
+import { MasonryGrid, MasonryItem } from "@/components/ui/masonry-grid";
 import { createMetadata } from "@/lib/metadata";
 import { PROJECTS, getProject } from "@/lib/projects";
+
+const GALLERY_RATIOS = [4 / 3, 3 / 4, 1 / 1, 4 / 3, 3 / 4];
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -219,27 +222,30 @@ export default async function ProjectPage({
             </div>
           </FadeIn>
 
-          {/* Right: scrolling gallery */}
-          <FadeIn delay={0.1} className="flex flex-col gap-4 sm:gap-6">
-            {(project.gallery.length > 0
-              ? project.gallery
-              : [{ src: project.image, alt: project.imageAlt }]
-            ).map((img, i) => (
-              <div
-                key={img.src}
-                className="ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
-                style={{ aspectRatio: i === 0 ? project.imageRatio : 4 / 3 }}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(min-width: 768px) 700px, 100vw"
-                  className="object-cover"
-                  priority={i === 0}
-                />
-              </div>
-            ))}
+          {/* Right: same masonry grid system as the homepage Work section */}
+          <FadeIn delay={0.1}>
+            <MasonryGrid>
+              {(project.gallery.length > 0
+                ? project.gallery
+                : [{ src: project.image, alt: project.imageAlt }]
+              ).map((img, i) => (
+                <MasonryItem key={img.src}>
+                  <div
+                    className="ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
+                    style={{ aspectRatio: GALLERY_RATIOS[i % GALLERY_RATIOS.length] }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                  </div>
+                </MasonryItem>
+              ))}
+            </MasonryGrid>
           </FadeIn>
         </div>
       </section>
