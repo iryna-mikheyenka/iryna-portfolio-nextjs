@@ -16,13 +16,13 @@ import {
 
 type NavItem = {
   label: string;
-  href: string;
+  /** Section id on the homepage, e.g. "about" for #about. */
+  hash: string;
 };
 
 const NAV_ITEMS: readonly NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
+  { label: "About", hash: "about" },
+  { label: "Work", hash: "work" },
 ];
 
 function useIsMounted(): boolean {
@@ -113,6 +113,7 @@ function NavThemeToggle(): ReactNode {
 
 export function Nav(): ReactNode {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
   const [pillRect, setPillRect] = useState<{
@@ -120,12 +121,39 @@ export function Nav(): ReactNode {
     width: number;
   } | null>(null);
   const [hasMeasured, setHasMeasured] = useState(false);
+  const [activeHash, setActiveHash] = useState<string | null>(null);
 
-  const activeIndex = NAV_ITEMS.findIndex((item) =>
-    item.href === "/"
-      ? pathname === "/"
-      : pathname === item.href || pathname.startsWith(`${item.href}/`)
-  );
+  useEffect(() => {
+    if (!isHome) return;
+
+    const sections = NAV_ITEMS.map((item) =>
+      document.getElementById(item.hash)
+    ).filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              Math.abs(a.boundingClientRect.top) -
+              Math.abs(b.boundingClientRect.top)
+          );
+        if (visible[0]) {
+          setActiveHash(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.1, 0.5, 1] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [isHome]);
+
+  const activeIndex = isHome
+    ? NAV_ITEMS.findIndex((item) => item.hash === activeHash)
+    : -1;
 
   useLayoutEffect(() => {
     const list = listRef.current;
@@ -141,7 +169,7 @@ export function Nav(): ReactNode {
       x: itemRect.left - listRect.left,
       width: itemRect.width,
     });
-  }, [activeIndex, pathname]);
+  }, [activeIndex, pathname, activeHash]);
 
   useEffect(() => {
     if (!pillRect) return;
@@ -172,29 +200,35 @@ export function Nav(): ReactNode {
           )}
           {NAV_ITEMS.map((item, index) => {
             const isActive = index === activeIndex;
+            const linkClassName =
+              "focus-ring relative inline-flex cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300";
+            const labelClassName = isActive
+              ? "relative z-10 text-foreground"
+              : "relative z-10 text-foreground/60 hover:text-foreground";
             return (
               <li
-                key={item.href}
+                key={item.hash}
                 ref={(el) => {
                   itemRefs.current[index] = el;
                 }}
                 className="relative"
               >
-                <Link
-                  href={item.href}
-                  aria-current={isActive ? "page" : undefined}
-                  className="focus-ring relative inline-flex cursor-pointer items-center justify-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-300"
-                >
-                  <span
-                    className={
-                      isActive
-                        ? "relative z-10 text-foreground"
-                        : "relative z-10 text-foreground/60 hover:text-foreground"
-                    }
+                {isHome ? (
+                  <a
+                    href={`#${item.hash}`}
+                    aria-current={isActive ? "page" : undefined}
+                    className={linkClassName}
                   >
-                    {item.label}
-                  </span>
-                </Link>
+                    <span className={labelClassName}>{item.label}</span>
+                  </a>
+                ) : (
+                  <Link
+                    href={`/#${item.hash}`}
+                    className={linkClassName}
+                  >
+                    <span className={labelClassName}>{item.label}</span>
+                  </Link>
+                )}
               </li>
             );
           })}
