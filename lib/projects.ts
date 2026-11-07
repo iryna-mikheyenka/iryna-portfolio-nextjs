@@ -51,20 +51,11 @@ export const PROJECTS: Project[] = [
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/states-of-mind-1.jpg",
-    imageAlt: "States of Mind resources and tools screen on mobile",
+    imageAlt: "States of Mind homepage on desktop and mobile",
     gallery: [
-      {
-        src: "/projects/states-of-mind-1.jpg",
-        alt: "States of Mind resources and tools screen on mobile",
-      },
-      {
-        src: "/projects/states-of-mind-2.jpg",
-        alt: "States of Mind homepage on tablet",
-      },
-      {
-        src: "/projects/states-of-mind-3.jpg",
-        alt: "States of Mind depression screening result page",
-      },
+      { src: "/projects/states-of-mind-1.jpg", alt: "States of Mind homepage on desktop and mobile" },
+      { src: "/projects/states-of-mind-2.jpg", alt: "States of Mind homepage on desktop" },
+      { src: "/projects/states-of-mind-3.jpg", alt: "States of Mind stories feed on mobile" },
     ],
     liveUrl: "https://statesofmind.com",
     context:
@@ -102,20 +93,15 @@ export const PROJECTS: Project[] = [
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/psystandard-1.jpg",
-    imageAlt: "PsyStandard 'what verified means' page on laptop",
+    imageAlt: "PsyStandard About page on desktop and mobile",
     gallery: [
-      {
-        src: "/projects/psystandard-1.jpg",
-        alt: "PsyStandard 'what verified means' page on laptop",
-      },
-      {
-        src: "/projects/psystandard-2.jpg",
-        alt: "PsyStandard coaches directory page on laptop",
-      },
+      { src: "/projects/psystandard-1.jpg", alt: "PsyStandard About page on desktop and membership page on mobile" },
+      { src: "/projects/psystandard-2.jpg", alt: "PsyStandard values and team on desktop" },
+      { src: "/projects/psystandard-3.jpg", alt: "PsyStandard membership page on mobile" },
     ],
     liveUrl: "https://psystandard.com",
     context:
-      "PsyStandard is trust infrastructure for the progressive mental health field — a platform that helps users evaluate providers, understand standards and navigate professional information with more confidence.",
+      "PsyStandard sets a shared standard for psychedelic practice: a verification framework co-designed with academic institutions, organisations and practitioners, with transparent, verifiable standards across Europe. I designed membership, verification and trust pages, and content structure for standards and credentialing.",
     problem:
       "Verifying practitioners was a manual, opaque process that took about 7 days, with no clear credibility signals for applicants and no streamlined tooling for reviewers.",
     solution:
@@ -145,20 +131,11 @@ export const PROJECTS: Project[] = [
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/mirari-1.jpg",
-    imageAlt: "Mirari Foundation Programme overview on mobile",
+    imageAlt: "Mirari homepage on desktop",
     gallery: [
-      {
-        src: "/projects/mirari-1.jpg",
-        alt: "Mirari Foundation Programme overview on mobile",
-      },
-      {
-        src: "/projects/mirari-2.jpg",
-        alt: "Mirari 'Professional Excellence for the Psychedelic Practitioner' homepage on laptop",
-      },
-      {
-        src: "/projects/mirari-3.jpg",
-        alt: "Mirari 'What you'll learn' webinar page on laptop",
-      },
+      { src: "/projects/mirari-1.jpg", alt: "Mirari homepage on desktop" },
+      { src: "/projects/mirari-2.jpg", alt: "Mirari course page: why practitioners need to understand microdosing now" },
+      { src: "/projects/mirari-3.jpg", alt: "Mirari homepage and course page on desktop" },
     ],
     liveUrl: "https://mirari.academy",
     context:
@@ -274,9 +251,14 @@ export const PROJECTS: Project[] = [
       "Designed a lightweight online tipping service: guests scan a waiter's QR code, pick an amount and pay in seconds, while venues get a dashboard with transparent reports.",
     meta: "Product Designer, QR Charge · 2023–2024",
     imageRatio: 1024 / 768,
-    image: "/projects/qr-tips.png",
-    imageAlt: "QR Tips app mockup",
-    gallery: [{ src: "/projects/qr-tips.png", alt: "QR Tips app mockup" }],
+    image: "/projects/qr-tips-1.jpg",
+    imageAlt: "QR Tips flow: QR card, tip selection, payment",
+    gallery: [
+      { src: "/projects/qr-tips-1.jpg", alt: "QR Tips flow: QR card, tip selection, payment" },
+      { src: "/projects/qr-tips-2.jpg", alt: "QR Tips QR table card" },
+      { src: "/projects/qr-tips-3.jpg", alt: "QR Tips waiter page with tip amount" },
+      { src: "/projects/qr-tips-4.jpg", alt: "QR Tips payment screen with Apple Pay, Google Pay and card" },
+    ],
     liveUrl: "https://qrtips.ch/",
     context:
       "QR Tips is an online tipping service with QR codes for hospitality venues, available in English, French and Polish. Every waiter gets an individual QR code; guests tip by card without cash, funds go to the staff member or the venue, and managers track amounts and staff activity in a personal dashboard. It extends the QR Charge product family.",
