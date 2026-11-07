@@ -25,9 +25,6 @@ export function Hero(): ReactNode {
               <span className="block whitespace-nowrap">Product designer,</span>
               <span className="block whitespace-nowrap">
                 UX/UI enthusiast
-                <span aria-hidden="true" className="ml-1">
-                  ✦
-                </span>
               </span>
             </h1>
 
