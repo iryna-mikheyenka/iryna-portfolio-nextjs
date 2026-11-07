@@ -52,11 +52,7 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/states-of-mind-1.jpg",
     imageAlt: "States of Mind homepage on desktop and mobile",
-    gallery: [
-      { src: "/projects/states-of-mind-1.jpg", alt: "States of Mind homepage on desktop and mobile" },
-      { src: "/projects/states-of-mind-2.jpg", alt: "States of Mind homepage on desktop" },
-      { src: "/projects/states-of-mind-3.jpg", alt: "States of Mind stories feed on mobile" },
-    ],
+    gallery: [{ src: "/projects/states-of-mind-1.jpg", alt: "States of Mind homepage on desktop and mobile" }],
     liveUrl: "https://statesofmind.com",
     context:
       "States of Mind offers expert insights, practical tools and personal stories of healing and growth — supporting every stage of a psychedelic journey. Today it combines Stories, News, podcasts (Human Journeys, Progress in Process), a Toolkit (substance guides, therapy guides, self-checks, preparation and integration tools) and a private Community. I built the product from 0→1 and continue developing its structure, user journeys, interface logic and design patterns.",
@@ -94,11 +90,7 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/psystandard-1.jpg",
     imageAlt: "PsyStandard About page on desktop and mobile",
-    gallery: [
-      { src: "/projects/psystandard-1.jpg", alt: "PsyStandard About page on desktop and membership page on mobile" },
-      { src: "/projects/psystandard-2.jpg", alt: "PsyStandard values and team on desktop" },
-      { src: "/projects/psystandard-3.jpg", alt: "PsyStandard membership page on mobile" },
-    ],
+    gallery: [{ src: "/projects/psystandard-1.jpg", alt: "PsyStandard About page on desktop and mobile" }],
     liveUrl: "https://psystandard.com",
     context:
       "PsyStandard sets a shared standard for psychedelic practice: a verification framework co-designed with academic institutions, organisations and practitioners, with transparent, verifiable standards across Europe. I designed membership, verification and trust pages, and content structure for standards and credentialing.",
@@ -132,11 +124,7 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/mirari-1.jpg",
     imageAlt: "Mirari homepage on desktop",
-    gallery: [
-      { src: "/projects/mirari-1.jpg", alt: "Mirari homepage on desktop" },
-      { src: "/projects/mirari-2.jpg", alt: "Mirari course page: why practitioners need to understand microdosing now" },
-      { src: "/projects/mirari-3.jpg", alt: "Mirari homepage and course page on desktop" },
-    ],
+    gallery: [{ src: "/projects/mirari-1.jpg", alt: "Mirari homepage on desktop" }],
     liveUrl: "https://mirari.academy",
     context:
       "Mirari brings psychedelic knowledge to the people who need it, together with the people who hold it: courses by researchers, doctors, therapists and facilitators. Each course goes deep on one subject, includes live sessions with the teacher, and links to the next. I designed the learning experience, landing pages, course structure, registration flow and visual system.",
@@ -253,12 +241,7 @@ export const PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/qr-tips-1.jpg",
     imageAlt: "QR Tips flow: QR card, tip selection, payment",
-    gallery: [
-      { src: "/projects/qr-tips-1.jpg", alt: "QR Tips flow: QR card, tip selection, payment" },
-      { src: "/projects/qr-tips-2.jpg", alt: "QR Tips QR table card" },
-      { src: "/projects/qr-tips-3.jpg", alt: "QR Tips waiter page with tip amount" },
-      { src: "/projects/qr-tips-4.jpg", alt: "QR Tips payment screen with Apple Pay, Google Pay and card" },
-    ],
+    gallery: [{ src: "/projects/qr-tips-1.jpg", alt: "QR Tips flow: QR card, tip selection, payment" }],
     liveUrl: "https://qrtips.ch/",
     context:
       "QR Tips is an online tipping service with QR codes for hospitality venues, available in English, French and Polish. Every waiter gets an individual QR code; guests tip by card without cash, funds go to the staff member or the venue, and managers track amounts and staff activity in a personal dashboard. It extends the QR Charge product family.",
