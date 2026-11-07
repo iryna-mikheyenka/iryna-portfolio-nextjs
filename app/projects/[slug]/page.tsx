@@ -73,7 +73,7 @@ export default async function ProjectPage({
               className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5"
               aria-hidden="true"
             />
-            Back to projects
+            Back to&nbsp;projects
           </Link>
 
           <header className="mb-8 flex items-center gap-2.5">
@@ -179,7 +179,7 @@ export default async function ProjectPage({
 
           {/* What I did */}
           <div className="mt-10">
-            <SectionLabel>What I did</SectionLabel>
+            <SectionLabel>What I&nbsp;did</SectionLabel>
             <Panel>
               <ul className="flex flex-col gap-3">
                 {project.highlights.map((item, i) => (

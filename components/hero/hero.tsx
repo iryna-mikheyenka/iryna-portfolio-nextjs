@@ -29,7 +29,7 @@ export function Hero(): ReactNode {
             </h1>
 
             <p className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
-              I turn complex healthcare, AI and fintech products into
+              I&nbsp;turn complex healthcare, AI&nbsp;and fintech products into
               interfaces people actually enjoy using.
             </p>
 

@@ -33,8 +33,8 @@ export function ContactCard(): ReactNode {
                   Let&rsquo;s connect
                 </h2>
                 <p className="max-w-[29ch] text-[18px] leading-[1.4] tracking-tight text-foreground/65 sm:text-[22px] mb-6">
-                  I&rsquo;m always open to discussing new projects, creative
-                  ideas, or opportunities to be part of your visions. Just reach out!
+                  I&rsquo;m always open to&nbsp;discussing new projects, creative
+                  ideas, or&nbsp;opportunities to&nbsp;be&nbsp;part of&nbsp;your visions. Just reach out!
                 </p>
                 <ContactCardCtas />
               </div>

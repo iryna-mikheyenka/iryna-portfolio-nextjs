@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import type { ComponentType } from "react";
 
+import { nb } from "@/lib/nbsp";
+
 /**
  * `process` and `metrics` are optional — only fill them in with real
  * numbers/steps you can stand behind. Leave them empty and that section
@@ -39,13 +41,13 @@ export type Project = {
   metrics: Metric[];
 };
 
-export const PROJECTS: Project[] = [
+const RAW_PROJECTS: Project[] = [
   {
     id: "states-of-mind",
     icon: HeartPulse,
     iconLabel: "States of Mind",
     title: "A psychedelic news, stories and science hub, built 0→1.",
-    description: "A content and guidance platform for people exploring psychedelics: stories, news, podcasts, a toolkit of guides and self-checks, and a private community. I built it from 0→1; a redesigned acquisition funnel and quiz experience raised qualified lead conversion by 16%.",
+    description: "A content and guidance platform for people exploring psychedelics: stories, news, podcasts, a toolkit of guides and self-checks, and a private community. I built it from 0→1 and grew it with funnel and content experiments: +16% qualified leads in 12 weeks, provider profile views per session up from 2% to 8%, +22% sessions.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/states-of-mind-1.jpg",
@@ -56,15 +58,18 @@ export const PROJECTS: Project[] = [
     problem: "The product started from nothing: a mission to give people clear, trustworthy guidance on a sensitive and often confusing topic, across very different content types and user intents.",
     solution: "A product structure that leads people from curiosity to understanding: clear entry points (Start Here), a toolkit organised by substance, therapy and self-check, editorial layouts that make complex topics easier to read, and quiz and assessment flows with clear next steps.",
     highlights: [
-      "Defined product structure, user journeys and information architecture from scratch",
-      "Designed quiz and assessment flows and result pages for sensitive, non-clinical self-screening",
-      "Redesigned the acquisition funnel and quiz experience, increasing qualified lead conversion by 16%",
-      "Designed the content experience: stories, news, podcasts, toolkit guides and community",
-      "Use AI tools for concept development, visual exploration and rapid prototyping before production",
+      "Built the product from 0→1: information architecture, user journeys, growth logic and responsive web UI for mobile and desktop",
+      "Increased qualified leads by 16% in 12 weeks by redesigning the provider-matching CTA and the quiz acquisition flow",
+      "Grew provider profile views per session from 2% to 8% by optimising key funnels and interaction patterns",
+      "Validated hypotheses through quizzes, paywall experiments and funnel tests before full-scale development",
+      "Increased sessions by 22% in 3–6 months through structured content and an internal linking strategy",
+      "Created a unified UI system with component rules, plus visuals and illustrations with Photoshop, Illustrator and AI tools",
     ],
     process: [],
     metrics: [
-      { label: "Qualified leads", value: "+16%" },
+      { label: "Qualified leads in 12 weeks", value: "+16%" },
+      { label: "Provider profile views per session", value: "2% → 8%" },
+      { label: "Sessions in 3–6 months", value: "+22%" },
     ],
   },
   {
@@ -72,7 +77,7 @@ export const PROJECTS: Project[] = [
     icon: ShieldCheck,
     iconLabel: "PsyStandard",
     title: "A trust standard for psychedelic practice in Europe.",
-    description: "PsyStandard is a verification framework for psychedelic practitioners, retreats and clinics, co-designed with academic institutions, harm-reduction experts and practitioners. I designed the site and the apply, membership and trust flows that make the standard clear to both practitioners and the people looking for them.",
+    description: "PsyStandard is a verification framework for psychedelic practitioners, retreats and clinics, co-designed with academic institutions, harm-reduction experts and practitioners. I built the provider verification system and the site around it: verification cycle time went from 7 to 2 days, and verified providers grew from 220 to 500+ in 14 days.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/psystandard-1.jpg",
@@ -83,15 +88,17 @@ export const PROJECTS: Project[] = [
     problem: "The psychedelic field's credibility problem is growing faster than the field itself. People looking for a practitioner can't tell who works safely, and good practitioners have no recognised way to show it. A badge alone wouldn't solve that: the standard had to be explained, believable and easy to engage with.",
     solution: "A site that makes the standard legible: what 'verified' means and what good practice is measured against, why practitioners join (peer community, supervision from recognised specialists, practice tools, a code of ethics), real people behind it (team, founding cohort, advisors, supervisors), and a short, human apply flow where every application is reviewed individually.",
     highlights: [
+      "Built a provider verification system: cycle time cut from 7 to 2 days",
+      "Verified providers grew from 220 to 500+ in 14 days",
       "Designed the information architecture: Standards, Membership, Articles, About, member login",
-      "Designed the homepage and the pages that explain the standard, its values and what verification means",
+      "Designed the pages that explain the standard, its values and what verification means",
       "Designed trust blocks: founding cohort, advisors and supervisors with credentials and affiliations",
       "Designed the apply-for-verification flow for different practice types, with clear expectations on review and response time",
-      "Improved the internal practitioner verification workflow, cutting review cycle time from 7 days to 2",
     ],
     process: [],
     metrics: [
-      { label: "Time to review a practitioner application", value: "7 → 2 days" },
+      { label: "Verification cycle time", value: "7 → 2 days" },
+      { label: "Verified providers in 14 days", value: "220 → 500+" },
     ],
   },
   {
@@ -126,7 +133,7 @@ export const PROJECTS: Project[] = [
     title: "A social media experience for AI-generated content and digital creators.",
     description:
       "Designed a mobile-first product that makes AI-generated content easy to explore, create and interact with — AI artist creation flows, feed experience, user journeys and interface logic, with usability testing feeding straight into iteration.",
-    meta: "Product Designer, X Labs · 2024",
+    meta: "Product Designer, X-Labs · 2024",
     imageRatio: 1024 / 768,
     image: "/projects/jggl-1.jpg",
     imageAlt: "JGGL AI-generated content post on mobile",
@@ -146,11 +153,10 @@ export const PROJECTS: Project[] = [
     solution:
       "Design AI artist creation flows and onboarding logic, a dynamic media feed built for browsing and continuous discovery, and like/save/share/profile interaction patterns adapted from social media, then iterate based on usability testing and user behavior.",
     highlights: [
-      "Designed AI-driven web and mobile product experiences, from the AI artist creation flow to the media feed",
-      "Ran user interviews, usability testing, competitor research and data analysis to find friction points and opportunities",
-      "Turned research findings and analytics into product improvements and helped the team prioritise design decisions",
-      "Worked with product managers, analysts and engineers across discovery, validation and delivery",
-      "Contributed to feature planning and backlog prioritisation",
+      "Designed AI/ML web and mobile product experiences, from the AI artist creation flow to the media feed, including research on users' functional states",
+      "Ran user interviews, usability tests, data analysis and competitor research to find key user needs and friction points",
+      "Prioritised the design backlog by business impact",
+      "With the PM, defined milestones that shortened launch time and improved retention",
     ],
     process: [
       "User interviews and competitor research",
@@ -168,7 +174,7 @@ export const PROJECTS: Project[] = [
     title: "A power-bank rental app and website live across Europe.",
     description:
       "Designed a clear mobile app and website experience for renting power banks — scan, rent, wallet and return flows, error states, an updated UI kit and marketing visuals for acquisition.",
-    meta: "Product Designer, QR Charge · 2023–2024",
+    meta: "Product Designer (Freelance), QR Charge · Aug 2023 – Jan 2024",
     imageRatio: 1024 / 768,
     image: "/projects/qr-charge-1.jpg",
     imageAlt: "QR Charge onboarding welcome screen",
@@ -187,10 +193,9 @@ export const PROJECTS: Project[] = [
     solution:
       "Design a mobile-first rental flow around scan, rent, wallet and return: a clear scanning entry point, simple rental confirmation with price and time, wallet and active-rental state in one place, and clear return instructions and error handling.",
     highlights: [
-      "Improved core flows: scanning, renting, returning devices, wallet interactions and error states",
-      "Designed the mobile app and website for a service operating across European markets",
-      "Updated the design system and UI kit for consistency, accessibility and scalability",
-      "Created product and marketing visuals for acquisition, brand recognition and product communication",
+      "Designed the QR Charge mobile app and website from scratch for a power bank rental service across Europe",
+      "Designed the scan, rent, return, wallet and error flows",
+      "Updated the design system and UI kit for accessibility",
     ],
     process: [],
     metrics: [],
@@ -202,7 +207,7 @@ export const PROJECTS: Project[] = [
     title: "Cashless QR tipping for restaurants and cafés.",
     description:
       "Designed a lightweight online tipping service: guests scan a waiter's QR code, pick an amount and pay in seconds, while venues get a dashboard with transparent reports.",
-    meta: "Product Designer, QR Charge · 2023–2024",
+    meta: "Product Designer (Freelance), QR Charge · Aug 2023 – Jan 2024",
     imageRatio: 1024 / 768,
     image: "/projects/qr-tips-1.jpg",
     imageAlt: "QR Tips flow: QR card, tip selection, payment",
@@ -212,6 +217,7 @@ export const PROJECTS: Project[] = [
     problem: "Tips are lost when guests have no cash, and venues have little visibility into who earns what.",
     solution: "A fast cashless flow for guests (scan, pick an amount, pay) and a dashboard that gives managers transparent tipping reports.",
     highlights: [
+      "Designed QRTips from scratch: UX structure, QR-based tipping flows and a fast payment interface",
       "Designed the guest flow: scan the waiter's QR code, choose an amount, pay",
       "Designed the venue dashboard for tipping analytics and staff transparency",
     ],
@@ -223,3 +229,15 @@ export const PROJECTS: Project[] = [
 export function getProject(id: string): Project | undefined {
   return PROJECTS.find((p) => p.id === id);
 }
+
+export const PROJECTS: Project[] = RAW_PROJECTS.map((p) => ({
+  ...p,
+  title: nb(p.title),
+  description: nb(p.description),
+  meta: nb(p.meta),
+  context: nb(p.context),
+  problem: nb(p.problem),
+  solution: nb(p.solution),
+  highlights: p.highlights.map(nb),
+  process: p.process.map(nb),
+}));

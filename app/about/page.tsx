@@ -25,13 +25,13 @@ export default function AboutPage(): ReactNode {
             </h1>
             <div className="mt-8 space-y-6 text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
               <p>
-                A <strong className="font-semibold text-foreground">product designer</strong> with 6+ years of experience designing digital products for international markets across <strong className="font-semibold text-foreground">healthcare, AI, fintech, Web3 and consumer platforms</strong>. I specialize in complex user flows, product strategy, UX research and scalable design systems for web and mobile.
+                A <strong className="font-semibold text-foreground">product designer</strong> with 6+&nbsp;years of&nbsp;experience designing web and mobile products for international markets, from <strong className="font-semibold text-foreground">0→1 launches</strong> to the growth of&nbsp;live products. I&nbsp;turn research, analytics and experiments into simple interfaces that move key metrics: <strong className="font-semibold text-foreground">+16% qualified leads in&nbsp;12&nbsp;weeks, 4× provider profile views per&nbsp;session, +22% sessions</strong>.
               </p>
               <p>
-                I&rsquo;m experienced in <strong className="font-semibold text-foreground">0→1 product development</strong> and cross-functional collaboration. At Pink Elephant Group I built States of Mind from scratch and design across its mental health, education and provider-discovery products; earlier I worked on AI products at X Labs and a power bank rental app at QR Charge.
+                I&rsquo;m strong in complex user flows, hypothesis testing and design systems, with a graphic design background: hand-drawn illustration, logos, Photoshop and Illustrator, and AI-generated visuals for platforms and marketing. I&nbsp;work closely with product managers, analysts and engineers from concept to launch.
               </p>
               <p>
-                I also taught <strong className="font-semibold text-foreground">UX/UI at BELHARD Academy</strong>, mentoring new designers through portfolio projects. I speak Russian (native), English (B2 / professional working) and a little German. Currently open to product design roles.
+                Based in Málaga, Spain, open to remote, hybrid and relocation. I&nbsp;speak Russian (native), English (B2), Polish (elementary) and a&nbsp;little German.
               </p>
             </div>
           </div>

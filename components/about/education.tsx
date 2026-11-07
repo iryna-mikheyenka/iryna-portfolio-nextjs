@@ -13,10 +13,6 @@ const ENTRIES: Entry[] = [
     degree: "Graphic Design",
     period: "2011 – 2014",
   },
-  {
-    school: "Additional training",
-    degree: "UX/UI, Product Design, Design Systems",
-  },
 ];
 
 const ROW_HEIGHT = 64;

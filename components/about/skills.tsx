@@ -2,51 +2,24 @@ import type { ReactNode } from "react";
 
 const GROUPS: { title: string; items: string[] }[] = [
   {
-    title: "Product & UX Design",
-    items: [
-      "Product Design",
-      "UX/UI Design",
-      "Information Architecture",
-      "User Flows",
-      "Wireframing",
-      "Prototyping",
-      "Interaction Design",
-    ],
+    title: "Product design",
+    items: ["Product Discovery", "User Flows", "Information Architecture", "Wireframing", "Prototyping", "Interaction Design", "Responsive Web & Mobile"],
   },
   {
-    title: "Key industries",
-    items: [
-      "Mental Health",
-      "Healthcare",
-      "AI/ML",
-      "Fintech",
-      "Web3",
-      "SaaS",
-      "Consumer Platforms",
-      "Digital Education",
-    ],
+    title: "Research & data",
+    items: ["User Interviews", "Usability Testing", "A/B Testing", "Hypothesis Testing", "Funnel Analytics", "Competitor Research"],
   },
   {
-    title: "Research & Validation",
-    items: [
-      "User Research",
-      "Competitor Research",
-      "Usability Testing",
-      "Data Analysis",
-      "Hypothesis Testing",
-      "User Feedback Analysis",
-    ],
+    title: "Systems & delivery",
+    items: ["Design Systems", "UI Kits", "Component Libraries", "Accessibility", "Developer Handoff"],
   },
   {
-    title: "Systems & Delivery",
-    items: [
-      "Design Systems",
-      "UI Kits",
-      "Component Libraries",
-      "Accessibility",
-      "Responsive Design",
-      "Developer Handoff",
-    ],
+    title: "Visual & graphic design",
+    items: ["Hand-drawn Illustration", "Logo Design", "Branding", "Posters", "Website Visuals", "AI Image Generation"],
+  },
+  {
+    title: "Domains",
+    items: ["Healthcare & Mental Health", "AI/ML", "Web3", "Fintech", "SaaS", "Consumer Platforms"],
   },
 ];
 

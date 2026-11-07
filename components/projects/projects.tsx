@@ -26,13 +26,13 @@ export function Projects({
               My projects
             </h2>
             <p className="max-w-[33ch] text-[18px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[20px]">
-              From playful experiments to thoughtful systems, a look at the
-              work I&rsquo;m proud to have shipped.
+              From playful experiments to&nbsp;thoughtful systems, a&nbsp;look at&nbsp;the
+              work I&rsquo;m proud to&nbsp;have shipped.
             </p>
           </FadeIn>
         ) : null}
 
-        <div className="columns-1 gap-6 md:columns-2 md:gap-7">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7">
           {items.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -68,11 +68,11 @@ function ProjectCard({
   return (
     <FadeIn
       delay={Math.min(index * 0.06, 0.3)}
-      className="mb-6 break-inside-avoid md:mb-7"
+      className="h-full"
     >
       <Link
         href={`/projects/${project.id}`}
-        className="focus-ring project-card flex cursor-pointer flex-col gap-4 rounded-3xl border border-foreground/8 bg-background p-3 sm:p-3.5"
+        className="focus-ring project-card flex h-full cursor-pointer flex-col gap-4 rounded-3xl border border-foreground/8 bg-background p-3 sm:p-3.5"
       >
         <header className="flex items-center gap-2.5 px-1 pt-2">
           <span className="border-foreground/10 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border bg-background">
@@ -85,7 +85,7 @@ function ProjectCard({
 
         <div
           className="project-card__image ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
-          style={{ aspectRatio: project.imageRatio }}
+          style={{ aspectRatio: 4 / 3 }}
         >
           <div className="project-card__image-inner">
             <Image
@@ -100,15 +100,15 @@ function ProjectCard({
         </div>
 
         <div className="flex flex-col gap-2.5 px-1 pb-1">
-          <h3 className="text-[20px] font-medium leading-[1.2] tracking-tight text-foreground sm:text-[22px]">
+          <h3 className="line-clamp-3 text-[20px] font-medium leading-[1.2] tracking-tight text-foreground sm:text-[22px]">
             {project.title}
           </h3>
-          <p className="text-[14px] leading-normal tracking-tight text-foreground/65 sm:text-[15px]">
+          <p className="line-clamp-5 text-[14px] leading-normal tracking-tight text-foreground/65 sm:text-[15px]">
             {project.description}
           </p>
         </div>
 
-        <p className="px-1 pb-2 text-[12px] tracking-tight text-foreground/50">
+        <p className="mt-auto px-1 pb-2 text-[12px] tracking-tight text-foreground/50">
           {project.meta}
         </p>
       </Link>

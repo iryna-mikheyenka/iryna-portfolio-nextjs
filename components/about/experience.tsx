@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { nb } from "@/lib/nbsp";
+
 type Entry = {
   company: string;
   role: string;
@@ -14,95 +16,87 @@ const ENTRIES: Entry[] = [
   {
     company: "Pink Elephant Group",
     role: "Senior Product Designer",
-    period: "Dec 2024 – Present",
+    period: "Dec 2024 \u2013 Present",
     place: "Remote",
-    projects: "States of Mind, PsyStandard, Mirari",
+    projects: "States of Mind, PsyStandard, Mirari (mental health, education and provider discovery platforms). Pink Elephant Group spun off from AmA Invest",
     brand: "#5b6ee1",
     bullets: [
-      "Lead end-to-end product design across the Pink Elephant ecosystem: mental health, education and provider discovery products.",
-      "Built States of Mind from 0→1 and continue to develop its structure, user journeys, interface logic and scalable design patterns.",
-      "Design provider discovery, verification, onboarding, education and assessment flows that make complex mental health products clearer, more trustworthy and easier to use.",
-      "Redesigned acquisition funnels and quiz experiences, increasing qualified lead conversion by 16%.",
-      "Improved internal provider verification workflows, reducing operational cycle time from 7 days to 2 days.",
-      "Use AI tools for concept development, visual exploration, rapid prototyping and early validation of design directions.",
+      "Built States of Mind from 0→1: information architecture, user journeys, growth logic, responsive web UI for mobile and desktop and a unified UI system with component rules.",
+      "Increased qualified leads by 16% in 12 weeks by redesigning the provider-matching CTA and the quiz acquisition flow.",
+      "Grew provider profile views per session from 2% to 8% by optimising key funnels and interaction patterns.",
+      "Validated product hypotheses through quizzes, paywall experiments and funnel tests before full-scale development.",
+      "Increased sessions by 22% in 3–6 months through structured content and an internal linking strategy.",
+      "Built a provider verification system: cycle time cut from 7 to 2 days; verified providers grew from 220 to 500+ in 14 days.",
+      "Created website visuals, illustrations and posters in Photoshop, Illustrator and AI tools (Midjourney, Higgsfield, ChatGPT), keeping a consistent visual style across products.",
+      "Introduced AI-assisted workflows: ~30% less time on analytics and research, 20% less development scope churn.",
     ],
   },
   {
-    company: "X Labs",
+    company: "X-Labs",
     role: "Product Designer",
-    period: "Feb 2024 – Dec 2024",
+    period: "Feb 2024 \u2013 Dec 2024",
     place: "Minsk, Belarus",
-    projects: "JGGL",
+    projects: "JGGL (AI-powered social network), Blockchain Sports (Web3 football ecosystem)",
     brand: "#2f8f7a",
     bullets: [
-      "Designed AI- and ML-driven web and mobile product experiences focused on human functional state analysis and behavioral insights.",
-      "Ran user interviews, usability testing, competitor research and data analysis to find user needs, friction points and product opportunities.",
-      "Turned research findings and analytics into product improvements, helping the team prioritize design decisions with higher business impact.",
-      "Worked closely with product managers, analysts and engineers across discovery, validation and delivery.",
-      "Contributed to feature planning and backlog prioritization, improving development speed and user retention.",
+      "Designed web and mobile products in AI/ML and Web3, including research on users' functional states.",
+      "Ran user interviews, usability tests, data analysis and competitor research to find key user needs and friction points.",
+      "Prioritised the design backlog by business impact; with the PM, defined milestones that shortened launch time and improved retention.",
     ],
   },
   {
-    company: "QR Charge",
+    company: "Freelance",
     role: "Product Designer",
-    period: "Aug 2023 – Dec 2024",
+    period: "Aug 2023 \u2013 Jan 2024",
     place: "Remote",
+    projects: "QR Charge (power bank rental, Europe), QRTips (cashless tipping)",
     brand: "#d97a4f",
     bullets: [
-      "Designed UX/UI for a mobile app and website for a power bank rental service operating across European markets.",
-      "Improved core flows for scanning, renting, returning devices, wallet interactions and error states.",
-      "Updated the design system and UI kit for consistency, accessibility and scalability.",
-      "Created product and marketing visuals to support acquisition, brand recognition and product communication.",
+      "Designed the QR Charge mobile app and website from scratch: scan, rent, return, wallet and error flows; updated the design system and UI kit for accessibility.",
+      "Designed QRTips from scratch: UX structure, QR-based tipping flows and a fast payment interface.",
     ],
   },
   {
     company: "BELHARD Academy",
     role: "UX/UI Design Lecturer",
-    period: "Jun 2023 – Jan 2025",
+    period: "Jun 2023 \u2013 Jan 2025",
     place: "Part-time",
     brand: "#3c4a63",
     bullets: [
-      "Adapted and improved UX/UI course materials to reflect current product design practices.",
-      "Mentored beginner designers through practical assignments, portfolio tasks and structured design feedback.",
-      "Created project-based learning scenarios that show real product design workflows.",
+      "Taught UX/UI design as a part-time lecturer.",
     ],
   },
   {
     company: "Duck.design",
     role: "UX/UI Designer",
-    period: "Sep 2022 – Mar 2023",
+    period: "Sep 2022 \u2013 Mar 2023",
     place: "Remote",
     brand: "#c94f6d",
     bullets: [
-      "Designed web and mobile interfaces for international clients across community, SaaS and digital platform products.",
-      "Improved UX for the Korean platform Momoboard by simplifying navigation and adapting flows to local expectations.",
-      "Redesigned information architecture and content hierarchy for Conduit and Clevmate, improving usability and engagement.",
-      "Used competitor research, client analytics and UX audits to create clearer, more scalable interface solutions.",
+      "Improved UX of Momoboard (Korean market) for iOS, Android and web.",
+      "Reworked information architecture of Conduit and Clevmate, reducing churn and increasing engagement.",
     ],
   },
   {
     company: "SENLA",
     role: "UX/UI Designer",
-    period: "Aug 2020 – Nov 2021",
+    period: "Aug 2020 \u2013 Nov 2021",
     place: "Minsk, Belarus",
     brand: "#1f2733",
     bullets: [
-      "Designed UX/UI for enterprise and insurance products, including dashboards and workflow-based internal tools.",
-      "Simplified complex data-heavy screens, map interactions and supervisor workflows to improve operational efficiency.",
-      "Ran UX analysis to find navigation and usability issues and turned them into clearer interface solutions.",
-      "Worked with developers to ensure accurate implementation and smooth design handoff.",
+      "Designed dashboards, map interactions and supervisor workflows for insurance products.",
+      "Improved menu structure and search, speeding up task completion.",
     ],
   },
   {
-    company: "Freelance",
-    role: "UX/UI Designer",
-    period: "Jan 2019 – Aug 2022",
-    place: "Remote",
+    company: "Earlier experience",
+    role: "Freelance UX/UI Designer, Graphic Designer",
+    period: "2016 \u2013 2022",
+    place: "",
     brand: "#8a6d3b",
     bullets: [
-      "Delivered UX/UI solutions for startups and small businesses across web and mobile products.",
-      "Led full design cycles from research and user flows to wireframes, high-fidelity UI and developer handoff.",
-      "Designed interfaces across fintech, e-commerce and data-driven platforms.",
+      "UX/UI Designer, Freelance (Jan 2019 – Jul 2020, Dec 2021 – Aug 2022): web and mobile interfaces for fintech and e-commerce startups, from research to developer handoff.",
+      "Graphic Designer, AIDA (Jan 2016 – Jan 2017): branding, advertising and web graphics in Adobe Photoshop and Illustrator.",
     ],
   },
 ];
@@ -138,12 +132,12 @@ export function Experience(): ReactNode {
                 </div>
               </div>
               <p className="text-foreground/55 mt-3 text-[13px] tracking-tight sm:text-[14px]">
-                {entry.period} · {entry.place}
+                {entry.period}{entry.place ? ` · ${entry.place}` : ""}
                 {entry.projects ? ` · Projects: ${entry.projects}` : ""}
               </p>
               <ul className="text-foreground/75 mt-3 list-disc space-y-2 pl-5 text-[15px] leading-[1.6] tracking-tight sm:text-[16px]">
                 {entry.bullets.map((b) => (
-                  <li key={b}>{b}</li>
+                  <li key={b}>{nb(b)}</li>
                 ))}
               </ul>
             </div>
