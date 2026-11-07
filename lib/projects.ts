@@ -45,9 +45,9 @@ export const PROJECTS: Project[] = [
     icon: HeartPulse,
     iconLabel: "States of Mind",
     title:
-      "A mental health self-discovery and guidance platform, built 0→1.",
+      "A psychedelic news, stories and science hub that supports every stage of the journey.",
     description:
-      "Built the product from 0→1 and continue developing its structure, user journeys, interface logic, content experience and scalable design patterns. A redesigned acquisition funnel lifted qualified leads by 16%.",
+      "Built the product from 0→1: stories, news, podcasts, a toolkit of substance and therapy guides, self-checks and a private community. A redesigned acquisition funnel lifted qualified leads by 16%.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/states-of-mind-1.jpg",
@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
     ],
     liveUrl: "https://statesofmind.com",
     context:
-      "States of Mind is a mental health self-discovery and guidance platform. I built the product from 0→1 and continue developing its structure, user journeys, interface logic, content experience and scalable design patterns.",
+      "States of Mind offers expert insights, practical tools and personal stories of healing and growth — supporting every stage of a psychedelic journey. Today it combines Stories, News, podcasts (Human Journeys, Progress in Process), a Toolkit (substance guides, therapy guides, self-checks, preparation and integration tools) and a private Community. I built the product from 0→1 and continue developing its structure, user journeys, interface logic and design patterns.",
     problem:
       "There was no existing product to build on — just a mission to create a clear, supportive digital platform that helps users understand their mental state, explore psychological topics, complete self-assessments and find relevant next steps.",
     solution:
@@ -139,9 +139,9 @@ export const PROJECTS: Project[] = [
     id: "mirari",
     icon: GraduationCap,
     iconLabel: "Mirari",
-    title: "A structured learning experience for progressive mental health education.",
+    title: "Author-led psychedelic education with live sessions at its core.",
     description:
-      "Designed the learning experience, landing pages, program structure, application flow and visual system for a progressive mental health education product.",
+      "Designed the course catalogue, landing pages, 'how it works' learning model, registration flow and visual system for a platform where researchers, clinicians and practitioners teach live.",
     meta: "Senior Product Designer, Pink Elephant Group · 2024–Present",
     imageRatio: 1024 / 768,
     image: "/projects/mirari-1.jpg",
@@ -162,15 +162,16 @@ export const PROJECTS: Project[] = [
     ],
     liveUrl: "https://mirari.academy",
     context:
-      "Mirari is a progressive mental health education product. I designed the learning experience, landing pages, program structure, application flow and visual system.",
+      "Mirari brings psychedelic knowledge to the people who need it, together with the people who hold it: courses by researchers, doctors, therapists and facilitators. Each course goes deep on one subject, includes live sessions with the teacher, and links to the next. I designed the learning experience, landing pages, course structure, registration flow and visual system.",
     problem:
       "Complex educational programs risked feeling intimidating or hard to evaluate if the curriculum, faculty and pricing weren't translated into a clear digital structure.",
     solution:
       "Make the program feel clear, credible and easy to explore: structured curriculum blocks and learning outcomes, faculty and methodology for trust, clear pricing and format for decision-making, and a simple path from exploration to application.",
     highlights: [
-      "Designed landing pages and program cards for a structured curriculum",
-      "Designed the application flow from program exploration to submission",
-      "Designed trust elements — faculty, methodology, science-backed positioning",
+      "Designed the course catalogue and course cards: teacher, format, live-session schedule and price at a glance",
+      "Designed the 'how a course works' model: live sessions, Q&A, recordings and the next course",
+      "Designed registration and 'get notified' flows, plus an FAQ and a 'teach with Mirari' path",
+      "Designed trust elements — teacher credentials, evidence-aware positioning, clear disclaimers",
       "Reused and extended the shared Pink Elephant design system",
     ],
     process: [
@@ -268,9 +269,9 @@ export const PROJECTS: Project[] = [
     id: "qr-tips",
     icon: HandCoins,
     iconLabel: "QR Tips",
-    title: "A tipping feature extending the QR Charge product family.",
+    title: "Cashless QR tipping for restaurants and cafés.",
     description:
-      "Designed a lightweight, trust-building tipping flow that plugs into the same QR-based interaction model as QR Charge.",
+      "Designed a lightweight online tipping service: guests scan a waiter's QR code, pick an amount and pay in seconds, while venues get a dashboard with transparent reports.",
     meta: "Product Designer, QR Charge · 2023–2024",
     imageRatio: 1024 / 768,
     image: "/projects/qr-tips.png",
@@ -278,13 +279,14 @@ export const PROJECTS: Project[] = [
     gallery: [{ src: "/projects/qr-tips.png", alt: "QR Tips app mockup" }],
     liveUrl: "https://qrtips.ch/",
     context:
-      "QR Tips extends the QR Charge product family with a lightweight tipping flow, using the same QR-based interaction model people already trust from renting a charger.",
+      "QR Tips is an online tipping service with QR codes for hospitality venues, available in English, French and Polish. Every waiter gets an individual QR code; guests tip by card without cash, funds go to the staff member or the venue, and managers track amounts and staff activity in a personal dashboard. It extends the QR Charge product family.",
     problem:
       "A tipping feature bolted onto an existing product easily turns into a separate, heavier checkout flow that breaks the speed people expect.",
     solution:
       "Reuse the existing QR interaction pattern and keep the tipping flow to as few steps as possible — a tip should take seconds, not a checkout.",
     highlights: [
-      "Designed a lightweight tipping flow using the existing QR interaction pattern",
+      "Designed a lightweight guest flow: scan the waiter's QR code, choose an amount, pay",
+      "Designed the venue dashboard for tipping analytics and staff transparency",
       "Kept the flow visually and structurally consistent with the QR Charge design system",
     ],
     process: [],
