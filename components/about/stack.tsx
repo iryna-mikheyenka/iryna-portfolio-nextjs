@@ -4,13 +4,17 @@ import {
   BookOpenText,
   CheckCircle2,
   Figma,
+  Film,
   Framer,
+  Gem,
   Github,
   Globe,
   Kanban,
+  MessageSquare,
   Image as ImageIcon,
   PenTool,
   RotateCcw,
+  Sailboat,
   Ruler,
   Slack,
   Sparkles,
@@ -46,6 +50,10 @@ const CHIPS: Chip[] = [
   { label: "Illustrator", bg: "#FF9A00", fg: "#1a0a00", Icon: PenTool },
   { label: "Claude", bg: "#D97757", fg: "#ffffff", Icon: Sparkles },
   { label: "GitHub", bg: "#181717", fg: "#ffffff", Icon: Github },
+  { label: "Sketch", bg: "#F7B500", fg: "#1a1a1a", Icon: Gem },
+  { label: "ChatGPT", bg: "#10A37F", fg: "#ffffff", Icon: MessageSquare },
+  { label: "Midjourney", bg: "#1b2a4a", fg: "#ffffff", Icon: Sailboat },
+  { label: "Higgsfield", bg: "#7a2cf0", fg: "#ffffff", Icon: Film },
   { label: "ClickUp", bg: "#7B68EE", fg: "#ffffff", Icon: CheckCircle2 },
 ];
 
@@ -237,7 +245,7 @@ export function Stack(): ReactNode {
         </h3>
       </div>
 
-      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative h-40 overflow-hidden rounded-4xl border sm:h-64">
+      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 relative h-72 overflow-hidden rounded-4xl border sm:h-96">
         <button
           type="button"
           onClick={() => setResetKey((k) => k + 1)}
