@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 type Entry = {
   school: string;
   degree: string;
-  period: string;
+  period?: string;
   slug?: string;
 };
 
@@ -16,7 +16,6 @@ const ENTRIES: Entry[] = [
   {
     school: "Additional training",
     degree: "UX/UI, Product Design, Design Systems",
-    period: "Ongoing",
   },
 ];
 
@@ -43,8 +42,12 @@ export function Education(): ReactNode {
                 </span>
                 <span className="text-foreground/65 mt-0.5 text-[14px] tracking-tight sm:text-[15px]">
                   {entry.degree}
-                  <span className="text-foreground/30 mx-2">•</span>
-                  <span className="text-foreground/55">{entry.period}</span>
+                  {entry.period ? (
+                    <>
+                      <span className="text-foreground/30 mx-2">•</span>
+                      <span className="text-foreground/55">{entry.period}</span>
+                    </>
+                  ) : null}
                 </span>
               </div>
             </li>

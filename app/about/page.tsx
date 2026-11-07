@@ -1,6 +1,5 @@
 import { Education } from "@/components/about/education";
 import { Experience } from "@/components/about/experience";
-import { PolaroidStrip } from "@/components/about/polaroid-strip";
 import { Skills } from "@/components/about/skills";
 import { Stack } from "@/components/about/stack";
 import { ContactCard } from "@/components/contact/contact-card";
@@ -18,11 +17,7 @@ export const metadata: Metadata = createMetadata({
 export default function AboutPage(): ReactNode {
   return (
     <main id="main-content" className="flex flex-1 flex-col">
-      <section className="mx-auto w-full max-w-312 pt-40 sm:pt-56">
-        <PolaroidStrip />
-      </section>
-
-      <section className="mx-auto w-full max-w-160 px-6 pt-20 pb-16 sm:px-10 sm:pt-28 sm:pb-24">
+      <section className="mx-auto w-full max-w-160 px-6 pt-36 pb-16 sm:px-10 sm:pt-48 sm:pb-20">
         <FadeIn delay={0.5}>
           <div className="rounded-4xl border border-foreground/5 bg-foreground/1.5 p-8 sm:p-12 dark:bg-foreground/3">
             <h1 className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]">
@@ -30,13 +25,13 @@ export default function AboutPage(): ReactNode {
             </h1>
             <div className="mt-8 space-y-6 text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
               <p>
-                A <strong className="font-semibold text-foreground">product designer</strong> with 6+ years designing digital products for international markets across <strong className="font-semibold text-foreground">healthcare, AI, fintech and consumer platforms</strong>. I specialize in complex user flows, product strategy and UX research, and in building design systems that keep working as a product grows.
+                A <strong className="font-semibold text-foreground">product designer</strong> with 6+ years of experience designing digital products for international markets across <strong className="font-semibold text-foreground">healthcare, AI, fintech, Web3 and consumer platforms</strong>. I specialize in complex user flows, product strategy, UX research and scalable design systems for web and mobile.
               </p>
               <p>
-                I&rsquo;ve taken products from <strong className="font-semibold text-foreground">0→1</strong> and helped mature ones scale, working closely with founders, product managers and engineers along the way. At Pink Elephant Group I built States of Mind from scratch; earlier I designed for QR Charge, Duck.design, SENLA and a range of freelance clients across fintech and e-commerce.
+                I&rsquo;m experienced in <strong className="font-semibold text-foreground">0→1 product development</strong> and cross-functional collaboration. At Pink Elephant Group I built States of Mind from scratch and design across its mental health, education and provider-discovery products; earlier I worked on AI products at X Labs and a power bank rental app at QR Charge.
               </p>
               <p>
-                Alongside client work, I taught <strong className="font-semibold text-foreground">UX/UI at BELHARD Academy</strong>, mentoring new designers through portfolio projects and real product-design workflows. Currently open to senior product design roles and select freelance projects.
+                I also taught <strong className="font-semibold text-foreground">UX/UI at BELHARD Academy</strong>, mentoring new designers through portfolio projects. I speak Russian (native), English (B2 / professional working) and a little German. Currently open to product design roles.
               </p>
             </div>
           </div>
