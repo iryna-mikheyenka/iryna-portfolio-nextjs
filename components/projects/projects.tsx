@@ -23,11 +23,10 @@ export function Projects({
         {withHeadline ? (
           <FadeIn className="flex flex-col items-center gap-5 pt-12 pb-10 text-center sm:pt-20 sm:pb-14">
             <h2 className="font-serif text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[3rem] lg:text-[3.5rem]">
-              My projects
+              Selected work
             </h2>
-            <p className="max-w-[33ch] text-[18px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[20px]">
-              From playful experiments to&nbsp;thoughtful systems, a&nbsp;look at&nbsp;the
-              work I&rsquo;m proud to&nbsp;have shipped.
+            <p className="max-w-[34ch] text-balance text-[18px] leading-[1.45] tracking-tight text-foreground/65 sm:text-[20px]">
+              Products in mental health, AI and fintech, designed from first&nbsp;idea to&nbsp;live&nbsp;launch.
             </p>
           </FadeIn>
         ) : null}
