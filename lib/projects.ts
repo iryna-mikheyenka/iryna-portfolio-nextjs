@@ -135,10 +135,9 @@ const RAW_PROJECTS: Project[] = [
       "Designed a mobile-first product that makes AI-generated content easy to explore, create and interact with — AI artist creation flows, feed experience, user journeys and interface logic, with usability testing feeding straight into iteration.",
     meta: "Product Designer, X-Labs · 2024",
     imageRatio: 1024 / 768,
-    image: "/projects/jggl-1.jpg",
-    imageAlt: "JGGL AI-generated content post on mobile",
+    image: "/projects/jggl-2.jpg",
+    imageAlt: "JGGL feed post, held in hand",
     gallery: [
-      { src: "/projects/jggl-1.jpg", alt: "JGGL AI-generated content post on mobile" },
       { src: "/projects/jggl-2.jpg", alt: "JGGL feed post, held in hand" },
       { src: "/projects/jggl-3.jpg", alt: "JGGL new publication / content creation screen" },
       { src: "/projects/jggl-4.jpg", alt: "JGGL feed view grid of AI-generated artist content" },
