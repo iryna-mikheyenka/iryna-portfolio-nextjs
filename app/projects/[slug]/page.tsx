@@ -110,7 +110,7 @@ export default async function ProjectPage({
 
 
           {/* At a glance */}
-          <dl className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <dl className="mt-8 grid grid-cols-2 gap-3">
             {[
               ["Role", project.role],
               ["Timeline", project.timeline],
@@ -118,7 +118,7 @@ export default async function ProjectPage({
             ].map(([k, v]) => (
               <div
                 key={k}
-                className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-3xl border p-4"
+                className={`${k === "Role" ? "col-span-2 " : ""}border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-3xl border p-4`}
               >
                 <dt className="text-[12px] font-semibold tracking-tight text-foreground/50 uppercase">
                   {k}

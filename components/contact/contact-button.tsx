@@ -34,8 +34,8 @@ export function ContactButton(): ReactNode {
   };
 
   return (
-    <motion.a
-      href={`mailto:${EMAIL}`}
+    <motion.button
+      type="button"
       layout
       onClick={() => {
         void handleCopy();
@@ -45,7 +45,7 @@ export function ContactButton(): ReactNode {
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       aria-label={
-        copied ? "Email copied" : `Email ${EMAIL}`
+        copied ? "Email copied" : `Copy email ${EMAIL}`
       }
       transition={{ layout: { duration: 0.55, ease: EASE } }}
       style={{ borderRadius: 12 }}
@@ -111,6 +111,6 @@ export function ContactButton(): ReactNode {
           )}
         </AnimatePresence>
       </motion.span>
-    </motion.a>
+    </motion.button>
   );
 }
