@@ -10,6 +10,7 @@ import type { MotionValue } from "motion/react";
 import Image from "next/image";
 import { Fragment, useRef, useState } from "react";
 import { Lightbox } from "@/components/ui/page-interactions";
+import { nb } from "@/lib/nbsp";
 import type { ReactNode } from "react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -41,25 +42,26 @@ export function ScrollText({
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.92", "end 0.55"],
+    offset: ["start 0.72", "end 0.72"],
   });
-  const words = text.split(" ");
+  const clean = nb(text);
+  const words = clean.split(" ");
 
   if (reduce) {
-    return <p className={className}>{text}</p>;
+    return <p className={className}>{clean}</p>;
   }
 
   return (
     <p ref={ref} className={className}>
       {words.map((word, i) => {
-        const start = (i / words.length) * 0.85;
+        const start = (i / words.length) * 0.9;
         return (
           <Fragment key={i}>
             <Word
               word={word}
               progress={scrollYProgress}
               start={start}
-              end={start + 0.15}
+              end={start + 0.1}
             />
             {i < words.length - 1 ? " " : null}
           </Fragment>
@@ -75,9 +77,9 @@ export function ScrollList({ items }: { items: string[] }): ReactNode {
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.85", "end 0.5"],
+    offset: ["start 0.72", "end 0.72"],
   });
-  const split = items.map((t) => t.split(" "));
+  const split = items.map((t) => nb(t).split(" "));
   const total = split.reduce((n, w) => n + w.length, 0);
   const offsets = split.map((_, k) =>
     split.slice(0, k).reduce((n, w) => n + w.length, 0),
@@ -98,16 +100,16 @@ export function ScrollList({ items }: { items: string[] }): ReactNode {
             />
             <p className="flex-1">
               {reduce
-                ? items[k]
+                ? words.join(" ")
                 : words.map((word, i) => {
-                    const start = ((base + i) / total) * 0.85;
+                    const start = ((base + i) / total) * 0.9;
                     return (
                       <Fragment key={i}>
                         <Word
                           word={word}
                           progress={scrollYProgress}
                           start={start}
-                          end={start + 0.15}
+                          end={start + 0.1}
                         />
                         {i < words.length - 1 ? " " : null}
                       </Fragment>
@@ -164,20 +166,22 @@ export function ProjectImage({
       type="button"
       onClick={() => setOpen(true)}
       aria-label={`Enlarge image: ${alt}`}
-      className="group ring-foreground/5 focus-ring relative block w-full cursor-zoom-in overflow-hidden rounded-2xl bg-foreground/5 ring-1 transition-shadow duration-500 hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.35)]"
+      className="group ring-foreground/5 focus-ring relative block w-full cursor-zoom-in overflow-hidden rounded-2xl bg-foreground/5 ring-1 transition-shadow duration-500 hover:shadow-[0_18px_50px_-24px_rgba(0,0,0,0.3)]"
       style={{ aspectRatio: ratio }}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="(min-width: 1024px) 640px, 100vw"
-        priority={priority}
-        onLoad={() => setLoaded(true)}
-        className={`object-cover transition-[opacity,transform,filter] duration-700 ease-out group-hover:scale-[1.03] ${
-          loaded ? "opacity-100 blur-0" : "opacity-0 blur-md"
-        }`}
-      />
+      <div className="absolute inset-0 transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:scale-[1.06]">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 640px, 100vw"
+          priority={priority}
+          onLoad={() => setLoaded(true)}
+          className={`object-cover transition-[opacity,filter] duration-700 ease-out ${
+            loaded ? "opacity-100 blur-0" : "opacity-0 blur-md"
+          }`}
+        />
+      </div>
     </button>
     {open ? (
       <Lightbox src={src} alt={alt} onClose={() => setOpen(false)} />

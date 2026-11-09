@@ -10,6 +10,7 @@ import { FadeIn } from "@/components/ui/motion-primitives";
 import { CountUp, ReadingProgress } from "@/components/ui/page-interactions";
 import { ProjectImage, Reveal, ScrollList, ScrollText } from "@/components/ui/scroll-text";
 import { createMetadata } from "@/lib/metadata";
+import { nb } from "@/lib/nbsp";
 import { PROJECTS, getProject } from "@/lib/projects";
 
 type PageProps = {
@@ -50,7 +51,7 @@ function SectionLabel({ children }: { children: ReactNode }): ReactNode {
 function Panel({ children }: { children: ReactNode }): ReactNode {
   return (
     <Reveal>
-      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-4xl border p-6 transition-colors duration-300 sm:p-8">
+      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/12 hover:bg-foreground/[0.04] rounded-4xl border p-6 transition-colors duration-700 ease-out sm:p-8">
         {children}
       </div>
     </Reveal>
@@ -94,12 +95,12 @@ export default async function ProjectPage({
             </span>
           </header>
 
-          <h1 className="font-serif text-[2rem] font-medium leading-[1.1] tracking-tight text-foreground sm:text-[2.5rem]">
-            {project.title}
+          <h1 className="text-balance font-serif text-[2rem] font-medium leading-[1.1] tracking-tight text-foreground sm:text-[2.5rem]">
+            {nb(project.title)}
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
             <p className="text-[13px] tracking-tight text-foreground/50">
-              {project.meta}
+              {nb(project.meta)}
             </p>
             {project.liveUrl ? (
               <a
@@ -133,7 +134,7 @@ export default async function ProjectPage({
                   {k}
                 </dt>
                 <dd className="mt-1.5 text-[14px] leading-[1.5] tracking-tight text-foreground/85">
-                  {v}
+                  {nb(v ?? "")}
                 </dd>
               </div>
             ))}
@@ -145,13 +146,13 @@ export default async function ProjectPage({
                 <Reveal key={img.src}><figure className="flex flex-col gap-2">
                   <ProjectImage
                     src={img.src}
-                    alt={img.alt}
+                    alt={nb(img.alt)}
                     ratio={i === 0 ? project.imageRatio : 4 / 3}
                     priority={i === 0}
                   />
                   {i > 0 ? (
                     <figcaption className="text-[13px] tracking-tight text-foreground/55">
-                      {img.alt}
+                      {nb(img.alt)}
                     </figcaption>
                   ) : null}
                 </figure></Reveal>
@@ -211,9 +212,9 @@ export default async function ProjectPage({
               <SectionLabel>Product evolution</SectionLabel>
               <div className="flex flex-col gap-3">
                 {project.stages.map((st) => (
-                  <Panel key={st.title}>
+                  <Panel key={nb(st.title)}>
                     <p className="text-[16px] font-medium tracking-tight text-foreground">
-                      {st.title}
+                      {nb(st.title)}
                     </p>
                     <ScrollText
                       text={st.text}
@@ -240,9 +241,9 @@ export default async function ProjectPage({
               <SectionLabel>Key decisions</SectionLabel>
               <div className="flex flex-col gap-3">
                 {project.decisions.map((d) => (
-                  <Panel key={d.title}>
+                  <Panel key={nb(d.title)}>
                     <p className="text-[16px] font-medium tracking-tight text-foreground">
-                      {d.title}
+                      {nb(d.title)}
                     </p>
                     <ScrollText
                       text={d.text}
@@ -269,7 +270,7 @@ export default async function ProjectPage({
                         {i + 1}
                       </span>
                       <span className="text-[15px] tracking-tight text-foreground">
-                        {step}
+                        {nb(step)}
                       </span>
                     </li>
                   ))}
@@ -296,13 +297,13 @@ export default async function ProjectPage({
               <div className="grid grid-cols-2 gap-4">
                 {project.metrics.map((metric, i) => (
                   <Reveal key={i} delay={(i % 2) * 0.08}>
-                  <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-3xl border p-6 text-center transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/12 hover:bg-foreground/[0.04] rounded-3xl border p-6 text-center transition-colors duration-700 ease-out">
                     <CountUp
                       value={metric.value}
                       className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]"
                     />
                     <p className="mt-1 text-[13px] tracking-tight text-foreground/60">
-                      {metric.label}
+                      {nb(metric.label)}
                     </p>
                   </div>
                   </Reveal>
@@ -319,13 +320,13 @@ export default async function ProjectPage({
               <div className="grid grid-cols-2 gap-4">
                 {project.scale.map((metric, i) => (
                   <Reveal key={i} delay={(i % 2) * 0.08}>
-                  <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-3xl border p-6 text-center transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/12 hover:bg-foreground/[0.04] rounded-3xl border p-6 text-center transition-colors duration-700 ease-out">
                     <CountUp
                       value={metric.value}
                       className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]"
                     />
                     <p className="mt-1 text-[13px] tracking-tight text-foreground/60">
-                      {metric.label}
+                      {nb(metric.label)}
                     </p>
                   </div>
                   </Reveal>
