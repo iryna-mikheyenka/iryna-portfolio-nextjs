@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { features } from "@/lib/config";
 
@@ -19,6 +20,15 @@ export function SmoothScroll({
 }: {
   children: ReactNode;
 }): ReactNode {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
+  // Every page change starts at the top (Lenis would otherwise keep its old position).
+  useEffect(() => {
+    lenisRef.current?.scrollTo(0, { immediate: true, force: true });
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   useEffect(() => {
     if (!features.smoothScroll) return;
 
@@ -29,6 +39,7 @@ export function SmoothScroll({
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis(LENIS_OPTIONS);
+    lenisRef.current = lenis;
 
     function raf(time: number): void {
       lenis.raf(time);
@@ -58,6 +69,7 @@ export function SmoothScroll({
       document.removeEventListener("click", handleAnchorClick);
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
