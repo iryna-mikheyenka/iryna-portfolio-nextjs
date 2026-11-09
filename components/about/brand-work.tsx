@@ -2,10 +2,10 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 
 const LOGOS = [
-  { name: "Pink Elephant", src: "/logos/pink.svg", w: 162, h: 24, dark: true },
-  { name: "States of Mind", src: "/logos/states.svg", w: 273, h: 40, dark: true },
-  { name: "PsyStandard", src: "/logos/psystandard.svg", w: 120, h: 20, dark: false },
-  { name: "Mirari", src: "/logos/mirari.svg", w: 132, h: 32, dark: false },
+  { name: "Pink Elephant", src: "/logos/pink-elephant.svg", w: 136, h: 24, show: 170, dark: true },
+  { name: "States of Mind", src: "/logos/states.svg", w: 273, h: 40, show: 200, dark: true },
+  { name: "PsyStandard", src: "/logos/psystandard.svg", w: 120, h: 20, show: 200, dark: false },
+  { name: "Mirari", src: "/logos/mirari.svg", w: 132, h: 32, show: 120, dark: false },
 ];
 
 export function BrandWork(): ReactNode {
@@ -34,7 +34,8 @@ export function BrandWork(): ReactNode {
                 width={l.w}
                 height={l.h}
                 unoptimized
-                className="h-auto max-h-9 w-auto max-w-full"
+                style={{ width: l.show, height: "auto" }}
+                className="max-w-full"
               />
             </div>
           ))}
