@@ -108,6 +108,28 @@ export default async function ProjectPage({
             ) : null}
           </div>
 
+
+          {/* At a glance */}
+          <dl className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {[
+              ["Role", project.role],
+              ["Timeline", project.timeline],
+              ["Platform", project.platform],
+            ].map(([k, v]) => (
+              <div
+                key={k}
+                className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-3xl border p-4"
+              >
+                <dt className="text-[12px] font-semibold tracking-tight text-foreground/50 uppercase">
+                  {k}
+                </dt>
+                <dd className="mt-1.5 text-[14px] leading-[1.5] tracking-tight text-foreground/85">
+                  {v}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
           {project.gallery.length > 1 ? (
             <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4">
               {project.gallery.map((img, i) => (
@@ -177,6 +199,26 @@ export default async function ProjectPage({
             </Panel>
           </div>
 
+
+          {/* Product evolution */}
+          {project.stages.length > 0 ? (
+            <div className="mt-10">
+              <SectionLabel>Product evolution</SectionLabel>
+              <div className="flex flex-col gap-3">
+                {project.stages.map((st) => (
+                  <Panel key={st.title}>
+                    <p className="text-[16px] font-medium tracking-tight text-foreground">
+                      {st.title}
+                    </p>
+                    <p className="mt-2 text-[15px] leading-[1.65] tracking-tight text-foreground/75">
+                      {st.text}
+                    </p>
+                  </Panel>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
           {/* What I did */}
           <div className="mt-10">
             <SectionLabel>What I&nbsp;did</SectionLabel>
@@ -197,6 +239,26 @@ export default async function ProjectPage({
               </ul>
             </Panel>
           </div>
+
+
+          {/* Key decisions */}
+          {project.decisions.length > 0 ? (
+            <div className="mt-10">
+              <SectionLabel>Key decisions</SectionLabel>
+              <div className="flex flex-col gap-3">
+                {project.decisions.map((d) => (
+                  <Panel key={d.title}>
+                    <p className="text-[16px] font-medium tracking-tight text-foreground">
+                      {d.title}
+                    </p>
+                    <p className="mt-2 text-[15px] leading-[1.6] tracking-tight text-foreground/75">
+                      {d.text}
+                    </p>
+                  </Panel>
+                ))}
+              </div>
+            </div>
+          ) : null}
 
           {/* Process */}
           {project.process.length > 0 ? (
@@ -222,6 +284,30 @@ export default async function ProjectPage({
             </div>
           ) : null}
 
+
+          {/* Outcomes */}
+          {project.outcomes.length > 0 ? (
+            <div className="mt-10">
+              <SectionLabel>Outcomes</SectionLabel>
+              <Panel>
+                <ul className="flex flex-col gap-3">
+                  {project.outcomes.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground/80"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Panel>
+            </div>
+          ) : null}
+
           {/* Results */}
           {project.metrics.length > 0 ? (
             <div className="mt-10">
@@ -243,6 +329,59 @@ export default async function ProjectPage({
               </div>
             </div>
           ) : null}
+
+
+          {/* Challenges */}
+          {project.challenges.length > 0 ? (
+            <div className="mt-10">
+              <SectionLabel>Challenges</SectionLabel>
+              <Panel>
+                <ul className="flex flex-col gap-3">
+                  {project.challenges.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground/80"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Panel>
+            </div>
+          ) : null}
+
+          {project.learnings ? (
+            <div className="mt-10">
+              <SectionLabel>What I&nbsp;learned</SectionLabel>
+              <p className="text-[17px] leading-[1.7] tracking-tight text-foreground/75">
+                {project.learnings}
+              </p>
+            </div>
+          ) : null}
+
+          <a
+            href="/Iryna_Mikheyenka_Portfolio_2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="focus-ring group border-foreground/8 bg-background mt-12 flex items-center justify-between gap-4 rounded-3xl border p-5 transition-colors hover:bg-foreground/3"
+          >
+            <span className="flex flex-col">
+              <span className="text-[16px] font-medium tracking-tight text-foreground">
+                Full portfolio (PDF)
+              </span>
+              <span className="text-[14px] tracking-tight text-foreground/60">
+                All selected projects with goals, roles and solutions.
+              </span>
+            </span>
+            <ArrowUpRight
+              className="h-5 w-5 shrink-0 text-foreground/60 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden="true"
+            />
+          </a>
         </FadeIn>
       </section>
 

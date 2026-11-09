@@ -26,7 +26,6 @@ const ENTRIES: Entry[] = [
       "Grew provider profile views per session from 2% to 8% by optimising key funnels and interaction patterns.",
       "Validated product hypotheses through quizzes, paywall experiments and funnel tests before full-scale development.",
       "Increased sessions by 22% in 3–6 months through structured content and an internal linking strategy.",
-      "Built a provider verification system: cycle time cut from 7 to 2 days; verified providers grew from 220 to 500+ in 14 days.",
       "Created website visuals, illustrations and posters in Photoshop, Illustrator and AI tools (Midjourney, Higgsfield, ChatGPT), keeping a consistent visual style across products.",
       "Introduced AI-assisted workflows: ~30% less time on analytics and research, 20% less development scope churn.",
     ],
