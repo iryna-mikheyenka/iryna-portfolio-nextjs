@@ -16,9 +16,9 @@ const ENTRIES: Entry[] = [
   {
     company: "Pink Elephant Group",
     role: "Senior Product Designer",
-    period: "Spring 2025 \u2013 Present",
+    period: "Mar 2025 \u2013 Present",
     place: "Remote",
-    projects: "States of Mind, PsyStandard, Mirari (mental health, education and provider discovery platforms). Pink Elephant Group spun off from AmA Invest",
+    projects: "States of Mind, PsyStandard, Mirari (mental health, education and provider discovery platforms)",
     brand: "#5b6ee1",
     bullets: [
       "Built States of Mind from 0→1: information architecture, user journeys, growth logic, responsive web UI for mobile and desktop and a unified UI system with component rules.",
@@ -28,6 +28,16 @@ const ENTRIES: Entry[] = [
       "Increased sessions by 22% in 3–6 months through structured content and an internal linking strategy.",
       "Created website visuals, illustrations and posters in Photoshop, Illustrator and AI tools (Midjourney, Higgsfield, ChatGPT), keeping a consistent visual style across products.",
       "Introduced AI-assisted workflows: ~30% less time on analytics and research, 20% less development scope churn.",
+    ],
+  },
+  {
+    company: "AmA Invest",
+    role: "Senior Product Designer",
+    period: "Dec 2024 – Feb 2025",
+    place: "Remote",
+    brand: "#b6e000",
+    bullets: [
+      "Pink Elephant later spun off from AmA Invest, and I moved with the product.",
     ],
   },
   {
