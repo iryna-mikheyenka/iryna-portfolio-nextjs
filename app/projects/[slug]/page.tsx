@@ -363,25 +363,6 @@ export default async function ProjectPage({
             </div>
           ) : null}
 
-          <a
-            href="/Iryna_Mikheyenka_Portfolio_2026.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="focus-ring group border-foreground/8 bg-background mt-12 flex items-center justify-between gap-4 rounded-3xl border p-5 transition-colors hover:bg-foreground/3"
-          >
-            <span className="flex flex-col">
-              <span className="text-[16px] font-medium tracking-tight text-foreground">
-                Full portfolio (PDF)
-              </span>
-              <span className="text-[14px] tracking-tight text-foreground/60">
-                All selected projects with goals, roles and solutions.
-              </span>
-            </span>
-            <ArrowUpRight
-              className="h-5 w-5 shrink-0 text-foreground/60 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              aria-hidden="true"
-            />
-          </a>
         </FadeIn>
       </section>
 
