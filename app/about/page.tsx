@@ -32,7 +32,7 @@ export default function AboutPage(): ReactNode {
                 I&rsquo;m strong in complex user flows, hypothesis testing and design systems, with a graphic design background: hand-drawn illustration, logos, Photoshop and Illustrator, and AI-generated visuals for platforms and marketing. I&nbsp;work closely with product managers, analysts and engineers from concept to launch.
               </p>
               <p>
-                I&nbsp;also taught UX/UI as a part-time lecturer at BELHARD Academy (2023&ndash;2025). Based in Málaga, Spain, open to remote, hybrid and relocation. I&nbsp;speak Russian (native), English (B2), Polish (elementary) and a&nbsp;little German.
+                I&nbsp;also taught UX/UI as a part-time lecturer at BELHARD Academy (2023&ndash;2025). Based in Málaga, Spain, open to remote work and business trips. I&nbsp;speak Russian (native), English (B2), Polish (elementary) and a&nbsp;little German.
               </p>
             </div>
           </div>
