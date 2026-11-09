@@ -16,7 +16,7 @@ const ENTRIES: Entry[] = [
   {
     company: "Pink Elephant Group",
     role: "Senior Product Designer",
-    period: "Dec 2024 \u2013 Present",
+    period: "Spring 2025 \u2013 Present",
     place: "Remote",
     projects: "States of Mind, PsyStandard, Mirari (mental health, education and provider discovery platforms). Pink Elephant Group spun off from AmA Invest",
     brand: "#5b6ee1",
