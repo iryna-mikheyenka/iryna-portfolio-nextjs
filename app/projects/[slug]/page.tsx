@@ -7,8 +7,8 @@ import type { ReactNode } from "react";
 
 import { ContactCard } from "@/components/contact/contact-card";
 import { FadeIn } from "@/components/ui/motion-primitives";
-import { CountUp, ReadingProgress, SectionNav } from "@/components/ui/page-interactions";
-import { ProjectImage, Reveal, ScrollText } from "@/components/ui/scroll-text";
+import { CountUp, ReadingProgress } from "@/components/ui/page-interactions";
+import { ProjectImage, Reveal, ScrollList, ScrollText } from "@/components/ui/scroll-text";
 import { createMetadata } from "@/lib/metadata";
 import { PROJECTS, getProject } from "@/lib/projects";
 
@@ -39,8 +39,7 @@ function SectionLabel({ children }: { children: ReactNode }): ReactNode {
   return (
     <Reveal>
       <p
-        data-toc
-        className="mb-4 scroll-mt-28 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase"
+        className="mb-4 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase"
       >
         {children}
       </p>
@@ -73,7 +72,6 @@ export default async function ProjectPage({
   return (
     <main id="main-content" className="flex flex-1 flex-col">
       <ReadingProgress />
-      <SectionNav />
       <section className="mx-auto w-full max-w-160 px-6 pt-44 pb-16 sm:px-10 sm:pt-56 sm:pb-20">
         <FadeIn>
           <Link
@@ -231,20 +229,7 @@ export default async function ProjectPage({
           <div className="mt-10">
             <SectionLabel>What I&nbsp;did</SectionLabel>
             <Panel>
-              <ul className="flex flex-col gap-3">
-                {project.highlights.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
-                    />
-                    <ScrollText text={item} className="flex-1" />
-                  </li>
-                ))}
-              </ul>
+              <ScrollList items={project.highlights} />
             </Panel>
           </div>
 
@@ -299,20 +284,7 @@ export default async function ProjectPage({
             <div className="mt-10">
               <SectionLabel>Outcomes</SectionLabel>
               <Panel>
-                <ul className="flex flex-col gap-3">
-                  {project.outcomes.map((item) => (
-                    <li
-                      key={item}
-                      className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground/80"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
-                      />
-                      <ScrollText text={item} className="flex-1" />
-                    </li>
-                  ))}
-                </ul>
+                <ScrollList items={project.outcomes} />
               </Panel>
             </div>
           ) : null}
@@ -372,20 +344,7 @@ export default async function ProjectPage({
             <div className="mt-10">
               <SectionLabel>Challenges</SectionLabel>
               <Panel>
-                <ul className="flex flex-col gap-3">
-                  {project.challenges.map((item) => (
-                    <li
-                      key={item}
-                      className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground/80"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
-                      />
-                      <ScrollText text={item} className="flex-1" />
-                    </li>
-                  ))}
-                </ul>
+                <ScrollList items={project.challenges} />
               </Panel>
             </div>
           ) : null}

@@ -69,6 +69,58 @@ export function ScrollText({
   );
 }
 
+/** A bullet list that fills in as one continuous reading pass, item after item. */
+export function ScrollList({ items }: { items: string[] }): ReactNode {
+  const ref = useRef<HTMLUListElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.85", "end 0.5"],
+  });
+  const split = items.map((t) => t.split(" "));
+  const total = split.reduce((n, w) => n + w.length, 0);
+  const offsets = split.map((_, k) =>
+    split.slice(0, k).reduce((n, w) => n + w.length, 0),
+  );
+
+  return (
+    <ul ref={ref} className="flex flex-col gap-3">
+      {split.map((words, k) => {
+        const base = offsets[k] ?? 0;
+        return (
+          <li
+            key={k}
+            className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground"
+          >
+            <span
+              aria-hidden="true"
+              className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
+            />
+            <p className="flex-1">
+              {reduce
+                ? items[k]
+                : words.map((word, i) => {
+                    const start = ((base + i) / total) * 0.85;
+                    return (
+                      <Fragment key={i}>
+                        <Word
+                          word={word}
+                          progress={scrollYProgress}
+                          start={start}
+                          end={start + 0.15}
+                        />
+                        {i < words.length - 1 ? " " : null}
+                      </Fragment>
+                    );
+                  })}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 /** Fades and lifts its children in when they enter the viewport. */
 export function Reveal({
   children,
