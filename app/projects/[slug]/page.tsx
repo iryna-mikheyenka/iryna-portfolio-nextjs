@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 
 import { ContactCard } from "@/components/contact/contact-card";
 import { FadeIn } from "@/components/ui/motion-primitives";
+import { ProjectImage, Reveal, ScrollText } from "@/components/ui/scroll-text";
 import { createMetadata } from "@/lib/metadata";
 import { PROJECTS, getProject } from "@/lib/projects";
 
@@ -35,17 +36,21 @@ export async function generateMetadata({
 
 function SectionLabel({ children }: { children: ReactNode }): ReactNode {
   return (
-    <p className="mb-4 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
-      {children}
-    </p>
+    <Reveal>
+      <p className="mb-4 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
+        {children}
+      </p>
+    </Reveal>
   );
 }
 
 function Panel({ children }: { children: ReactNode }): ReactNode {
   return (
-    <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-4xl border p-6 sm:p-8">
-      {children}
-    </div>
+    <Reveal>
+      <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-4xl border p-6 transition-colors duration-300 sm:p-8">
+        {children}
+      </div>
+    </Reveal>
   );
 }
 
@@ -133,26 +138,19 @@ export default async function ProjectPage({
           {project.gallery.length > 1 ? (
             <div className="mt-10 flex flex-col gap-6">
               {project.gallery.map((img, i) => (
-                <figure key={img.src} className="flex flex-col gap-2">
-                  <div
-                    className="ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
-                    style={{ aspectRatio: i === 0 ? project.imageRatio : 4 / 3 }}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      sizes="(min-width: 1024px) 640px, 100vw"
-                      className="object-cover"
-                      priority={i === 0}
-                    />
-                  </div>
+                <Reveal key={img.src}><figure className="flex flex-col gap-2">
+                  <ProjectImage
+                    src={img.src}
+                    alt={img.alt}
+                    ratio={i === 0 ? project.imageRatio : 4 / 3}
+                    priority={i === 0}
+                  />
                   {i > 0 ? (
                     <figcaption className="text-[13px] tracking-tight text-foreground/55">
                       {img.alt}
                     </figcaption>
                   ) : null}
-                </figure>
+                </figure></Reveal>
               ))}
             </div>
           ) : (
@@ -174,9 +172,10 @@ export default async function ProjectPage({
           {/* Context */}
           <div className="mt-12">
             <SectionLabel>Context</SectionLabel>
-            <p className="text-[17px] leading-[1.7] tracking-tight text-foreground/75 sm:text-[18px]">
-              {project.context}
-            </p>
+            <ScrollText
+              text={project.context}
+              className="text-[17px] leading-[1.7] tracking-tight text-foreground sm:text-[18px]"
+            />
           </div>
 
           {/* Problem / Solution */}
@@ -185,17 +184,19 @@ export default async function ProjectPage({
               <p className="mb-3 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
                 Problem
               </p>
-              <p className="text-[15px] leading-[1.6] tracking-tight text-foreground/80">
-                {project.problem}
-              </p>
+              <ScrollText
+                text={project.problem}
+                className="text-[15px] leading-[1.6] tracking-tight text-foreground"
+              />
             </Panel>
             <Panel>
               <p className="mb-3 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
                 Solution
               </p>
-              <p className="text-[15px] leading-[1.6] tracking-tight text-foreground/80">
-                {project.solution}
-              </p>
+              <ScrollText
+                text={project.solution}
+                className="text-[15px] leading-[1.6] tracking-tight text-foreground"
+              />
             </Panel>
           </div>
 
@@ -210,9 +211,10 @@ export default async function ProjectPage({
                     <p className="text-[16px] font-medium tracking-tight text-foreground">
                       {st.title}
                     </p>
-                    <p className="mt-2 text-[15px] leading-[1.65] tracking-tight text-foreground/75">
-                      {st.text}
-                    </p>
+                    <ScrollText
+                      text={st.text}
+                      className="mt-2 text-[15px] leading-[1.65] tracking-tight text-foreground"
+                    />
                   </Panel>
                 ))}
               </div>
@@ -227,13 +229,13 @@ export default async function ProjectPage({
                 {project.highlights.map((item, i) => (
                   <li
                     key={i}
-                    className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground/80"
+                    className="flex gap-3 text-[15px] leading-[1.6] tracking-tight text-foreground"
                   >
                     <span
                       aria-hidden="true"
                       className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
                     />
-                    <span>{item}</span>
+                    <ScrollText text={item} className="flex-1" />
                   </li>
                 ))}
               </ul>
@@ -251,9 +253,10 @@ export default async function ProjectPage({
                     <p className="text-[16px] font-medium tracking-tight text-foreground">
                       {d.title}
                     </p>
-                    <p className="mt-2 text-[15px] leading-[1.6] tracking-tight text-foreground/75">
-                      {d.text}
-                    </p>
+                    <ScrollText
+                      text={d.text}
+                      className="mt-2 text-[15px] leading-[1.65] tracking-tight text-foreground"
+                    />
                   </Panel>
                 ))}
               </div>
@@ -300,7 +303,7 @@ export default async function ProjectPage({
                         aria-hidden="true"
                         className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
                       />
-                      <span>{item}</span>
+                      <ScrollText text={item} className="flex-1" />
                     </li>
                   ))}
                 </ul>
@@ -314,10 +317,8 @@ export default async function ProjectPage({
               <SectionLabel>Results</SectionLabel>
               <div className="grid grid-cols-2 gap-4">
                 {project.metrics.map((metric, i) => (
-                  <div
-                    key={i}
-                    className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-3xl border p-6 text-center"
-                  >
+                  <Reveal key={i} delay={(i % 2) * 0.08}>
+                  <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-3xl border p-6 text-center transition-all duration-300 hover:-translate-y-0.5">
                     <p className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]">
                       {metric.value}
                     </p>
@@ -325,6 +326,7 @@ export default async function ProjectPage({
                       {metric.label}
                     </p>
                   </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -337,10 +339,8 @@ export default async function ProjectPage({
               <SectionLabel>The product today</SectionLabel>
               <div className="grid grid-cols-2 gap-4">
                 {project.scale.map((metric, i) => (
-                  <div
-                    key={i}
-                    className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-3xl border p-6 text-center"
-                  >
+                  <Reveal key={i} delay={(i % 2) * 0.08}>
+                  <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-3xl border p-6 text-center transition-all duration-300 hover:-translate-y-0.5">
                     <p className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]">
                       {metric.value}
                     </p>
@@ -348,6 +348,7 @@ export default async function ProjectPage({
                       {metric.label}
                     </p>
                   </div>
+                  </Reveal>
                 ))}
               </div>
               {project.scaleSource ? (
@@ -373,7 +374,7 @@ export default async function ProjectPage({
                         aria-hidden="true"
                         className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40"
                       />
-                      <span>{item}</span>
+                      <ScrollText text={item} className="flex-1" />
                     </li>
                   ))}
                 </ul>
@@ -384,9 +385,10 @@ export default async function ProjectPage({
           {project.learnings ? (
             <div className="mt-10">
               <SectionLabel>What I&nbsp;learned</SectionLabel>
-              <p className="text-[17px] leading-[1.7] tracking-tight text-foreground/75">
-                {project.learnings}
-              </p>
+              <ScrollText
+                text={project.learnings}
+                className="text-[17px] leading-[1.7] tracking-tight text-foreground"
+              />
             </div>
           ) : null}
 
