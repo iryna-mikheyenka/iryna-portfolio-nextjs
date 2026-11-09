@@ -131,22 +131,28 @@ export default async function ProjectPage({
           </dl>
 
           {project.gallery.length > 1 ? (
-            <div className="mt-10 flex flex-col gap-3 sm:gap-4">
+            <div className="mt-10 flex flex-col gap-6">
               {project.gallery.map((img, i) => (
-                <div
-                  key={img.src}
-                  className="ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
-                  style={{ aspectRatio: i === 0 ? project.imageRatio : 4 / 3 }}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(min-width: 1024px) 640px, 100vw"
-                    className="object-cover"
-                    priority={i === 0}
-                  />
-                </div>
+                <figure key={img.src} className="flex flex-col gap-2">
+                  <div
+                    className="ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1"
+                    style={{ aspectRatio: i === 0 ? project.imageRatio : 4 / 3 }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(min-width: 1024px) 640px, 100vw"
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                  </div>
+                  {i > 0 ? (
+                    <figcaption className="text-[13px] tracking-tight text-foreground/55">
+                      {img.alt}
+                    </figcaption>
+                  ) : null}
+                </figure>
               ))}
             </div>
           ) : (
