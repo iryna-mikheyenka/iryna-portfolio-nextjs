@@ -27,6 +27,8 @@ const ENTRIES: Entry[] = [
       "Validated product hypotheses through quizzes, paywall experiments and funnel tests before full-scale development.",
       "Increased sessions by 22% in 3–6 months through structured content and an internal linking strategy.",
       "Created website visuals, illustrations and posters in Photoshop, Illustrator and AI tools (Midjourney, Higgsfield, ChatGPT), keeping a consistent visual style across products.",
+      "Cut the provider verification cycle from 7 to 2 days; verified providers grew from 220 to 500+ in 14 days.",
+      "Worked as the only designer on the team: defended design decisions with stakeholders and ran design reviews of features in production.",
       "Introduced AI-assisted workflows: ~30% less time on analytics and research, 20% less development scope churn.",
     ],
   },
@@ -66,16 +68,6 @@ const ENTRIES: Entry[] = [
     ],
   },
   {
-    company: "BELHARD Academy",
-    role: "UX/UI Design Lecturer",
-    period: "Jun 2023 \u2013 Jan 2025",
-    place: "Part-time",
-    brand: "#3c4a63",
-    bullets: [
-      "Taught UX/UI design as a part-time lecturer.",
-    ],
-  },
-  {
     company: "Duck.design",
     role: "UX/UI Designer",
     period: "Sep 2022 \u2013 Mar 2023",
@@ -100,7 +92,7 @@ const ENTRIES: Entry[] = [
   {
     company: "Earlier experience",
     role: "Freelance UX/UI Designer, Graphic Designer",
-    period: "2016 \u2013 2022",
+    period: "",
     place: "",
     brand: "#8a6d3b",
     bullets: [
@@ -140,10 +132,17 @@ export function Experience(): ReactNode {
                   </span>
                 </div>
               </div>
-              <p className="text-foreground/55 mt-3 text-[13px] tracking-tight sm:text-[14px]">
-                {entry.period}{entry.place ? ` · ${entry.place}` : ""}
-                {entry.projects ? ` · Projects: ${entry.projects}` : ""}
-              </p>
+              {entry.period || entry.place || entry.projects ? (
+                <p className="text-foreground/55 mt-3 text-[13px] tracking-tight sm:text-[14px]">
+                  {[
+                    entry.period,
+                    entry.place,
+                    entry.projects ? `Projects: ${entry.projects}` : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" · ")}
+                </p>
+              ) : null}
               <ul className="text-foreground/75 mt-3 list-disc space-y-2 pl-5 text-[15px] leading-[1.6] tracking-tight sm:text-[16px]">
                 {entry.bullets.map((b) => (
                   <li key={b}>{nb(b)}</li>

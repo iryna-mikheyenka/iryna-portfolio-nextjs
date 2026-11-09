@@ -5,11 +5,16 @@ import { createMetadata, siteConfig } from "@/lib/metadata";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-export const metadata: Metadata = createMetadata({
-  title: "Home",
-  description: `Welcome to ${siteConfig.name}. ${siteConfig.description}`,
-  path: "/",
-});
+const HOME_TITLE = `${siteConfig.name} — Product Designer`;
+
+export const metadata: Metadata = {
+  ...createMetadata({
+    title: HOME_TITLE,
+    description: siteConfig.description,
+    path: "/",
+  }),
+  title: { absolute: HOME_TITLE },
+};
 
 export default function HomePage(): ReactNode {
   return (

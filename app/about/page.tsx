@@ -1,3 +1,4 @@
+import { BrandWork } from "@/components/about/brand-work";
 import { Education } from "@/components/about/education";
 import { Experience } from "@/components/about/experience";
 import { Skills } from "@/components/about/skills";
@@ -31,7 +32,7 @@ export default function AboutPage(): ReactNode {
                 I&rsquo;m strong in complex user flows, hypothesis testing and design systems, with a graphic design background: hand-drawn illustration, logos, Photoshop and Illustrator, and AI-generated visuals for platforms and marketing. I&nbsp;work closely with product managers, analysts and engineers from concept to launch.
               </p>
               <p>
-                Based in Málaga, Spain, open to remote, hybrid and relocation. I&nbsp;speak Russian (native), English (B2), Polish (elementary) and a&nbsp;little German.
+                I&nbsp;also taught UX/UI as a part-time lecturer at BELHARD Academy (2023&ndash;2025). Based in Málaga, Spain, open to remote, hybrid and relocation. I&nbsp;speak Russian (native), English (B2), Polish (elementary) and a&nbsp;little German.
               </p>
             </div>
           </div>
@@ -42,6 +43,7 @@ export default function AboutPage(): ReactNode {
         <FadeIn delay={0.1}>
           <div className="flex flex-col gap-10">
             <Experience />
+            <BrandWork />
             <Education />
             <Skills />
             <Stack />
