@@ -9,6 +9,7 @@ import {
 import type { MotionValue } from "motion/react";
 import Image from "next/image";
 import { Fragment, useRef, useState } from "react";
+import { Lightbox } from "@/components/ui/page-interactions";
 import type { ReactNode } from "react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -104,9 +105,14 @@ export function ProjectImage({
   priority?: boolean;
 }): ReactNode {
   const [loaded, setLoaded] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
-    <div
-      className="group ring-foreground/5 relative w-full overflow-hidden rounded-2xl bg-foreground/5 ring-1 transition-shadow duration-500 hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.35)]"
+    <>
+    <button
+      type="button"
+      onClick={() => setOpen(true)}
+      aria-label={`Enlarge image: ${alt}`}
+      className="group ring-foreground/5 focus-ring relative block w-full cursor-zoom-in overflow-hidden rounded-2xl bg-foreground/5 ring-1 transition-shadow duration-500 hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.35)]"
       style={{ aspectRatio: ratio }}
     >
       <Image
@@ -120,6 +126,10 @@ export function ProjectImage({
           loaded ? "opacity-100 blur-0" : "opacity-0 blur-md"
         }`}
       />
-    </div>
+    </button>
+    {open ? (
+      <Lightbox src={src} alt={alt} onClose={() => setOpen(false)} />
+    ) : null}
+    </>
   );
 }

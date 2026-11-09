@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 
 import { ContactCard } from "@/components/contact/contact-card";
 import { FadeIn } from "@/components/ui/motion-primitives";
+import { CountUp, ReadingProgress, SectionNav } from "@/components/ui/page-interactions";
 import { ProjectImage, Reveal, ScrollText } from "@/components/ui/scroll-text";
 import { createMetadata } from "@/lib/metadata";
 import { PROJECTS, getProject } from "@/lib/projects";
@@ -37,7 +38,10 @@ export async function generateMetadata({
 function SectionLabel({ children }: { children: ReactNode }): ReactNode {
   return (
     <Reveal>
-      <p className="mb-4 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
+      <p
+        data-toc
+        className="mb-4 scroll-mt-28 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase"
+      >
         {children}
       </p>
     </Reveal>
@@ -68,6 +72,8 @@ export default async function ProjectPage({
 
   return (
     <main id="main-content" className="flex flex-1 flex-col">
+      <ReadingProgress />
+      <SectionNav />
       <section className="mx-auto w-full max-w-160 px-6 pt-44 pb-16 sm:px-10 sm:pt-56 sm:pb-20">
         <FadeIn>
           <Link
@@ -319,9 +325,10 @@ export default async function ProjectPage({
                 {project.metrics.map((metric, i) => (
                   <Reveal key={i} delay={(i % 2) * 0.08}>
                   <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-3xl border p-6 text-center transition-all duration-300 hover:-translate-y-0.5">
-                    <p className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]">
-                      {metric.value}
-                    </p>
+                    <CountUp
+                      value={metric.value}
+                      className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]"
+                    />
                     <p className="mt-1 text-[13px] tracking-tight text-foreground/60">
                       {metric.label}
                     </p>
@@ -341,9 +348,10 @@ export default async function ProjectPage({
                 {project.scale.map((metric, i) => (
                   <Reveal key={i} delay={(i % 2) * 0.08}>
                   <div className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 hover:border-foreground/15 hover:bg-foreground/[0.05] rounded-3xl border p-6 text-center transition-all duration-300 hover:-translate-y-0.5">
-                    <p className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]">
-                      {metric.value}
-                    </p>
+                    <CountUp
+                      value={metric.value}
+                      className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]"
+                    />
                     <p className="mt-1 text-[13px] tracking-tight text-foreground/60">
                       {metric.label}
                     </p>
