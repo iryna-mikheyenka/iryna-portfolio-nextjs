@@ -331,6 +331,33 @@ export default async function ProjectPage({
           ) : null}
 
 
+          {/* Product scale */}
+          {project.scale && project.scale.length > 0 ? (
+            <div className="mt-10">
+              <SectionLabel>The product today</SectionLabel>
+              <div className="grid grid-cols-2 gap-4">
+                {project.scale.map((metric, i) => (
+                  <div
+                    key={i}
+                    className="border-foreground/5 bg-foreground/2 dark:bg-foreground/5 rounded-3xl border p-6 text-center"
+                  >
+                    <p className="font-serif text-[1.75rem] font-medium tracking-tight text-foreground sm:text-[2rem]">
+                      {metric.value}
+                    </p>
+                    <p className="mt-1 text-[13px] tracking-tight text-foreground/60">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              {project.scaleSource ? (
+                <p className="mt-3 text-[12px] tracking-tight text-foreground/45">
+                  Source: {project.scaleSource}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+
           {/* Challenges */}
           {project.challenges.length > 0 ? (
             <div className="mt-10">

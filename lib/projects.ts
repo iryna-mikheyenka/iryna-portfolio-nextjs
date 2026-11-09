@@ -52,6 +52,9 @@ export type Project = {
   highlights: string[];
   process: string[];
   metrics: Metric[];
+  /** Product-scale facts from the media kit (not design results). */
+  scale?: Metric[] | undefined;
+  scaleSource?: string | undefined;
 };
 
 const RAW_PROJECTS: Project[] = [
@@ -74,9 +77,9 @@ const RAW_PROJECTS: Project[] = [
     imageRatio: 1024 / 768,
     image: "/projects/states-of-mind-1.jpg",
     imageAlt: "States of Mind homepage on desktop and mobile",
-    gallery: [{ src: "/projects/states-of-mind-1.jpg", alt: "States of Mind homepage on desktop and mobile" },{ src: "/projects/states-of-mind-4.jpg", alt: "States of Mind homepage before the redesign" },{ src: "/projects/states-of-mind-5.jpg", alt: "States of Mind homepage after the redesign" },{ src: "/projects/states-of-mind-6.jpg", alt: "States of Mind personalisation question on mobile" },{ src: "/projects/states-of-mind-7.jpg", alt: "States of Mind self-assessment question on mobile" }],
+    gallery: [{ src: "/projects/states-of-mind-1.jpg", alt: "States of Mind homepage on desktop and mobile" },{ src: "/projects/states-of-mind-4.jpg", alt: "States of Mind homepage before the redesign" },{ src: "/projects/states-of-mind-5.jpg", alt: "States of Mind homepage after the redesign" },{ src: "/projects/states-of-mind-7.jpg", alt: "States of Mind self-assessment question on mobile" },{ src: "/projects/states-of-mind-8.jpg", alt: "States of Mind preparation tools and self-checks" },{ src: "/projects/states-of-mind-9.jpg", alt: "States of Mind Psychedelic Therapy Legality Map for Europe" },{ src: "/projects/states-of-mind-10.jpg", alt: "States of Mind legality map country page on mobile" }],
     liveUrl: "https://statesofmind.com",
-    context: "States of Mind is a platform about mental health, psychedelic therapy and evidence-based approaches to psychological support. It combines educational content, personal stories, self-assessments and tools for finding professional help. I built it from 0→1 as the lead designer and later led its evolution and redesign.",
+    context: "States of Mind is a platform about mental health, psychedelic therapy and evidence-based approaches to psychological support. It combines educational content, personal stories, self-assessments and tools for finding professional help. I built it from 0→1 as the lead designer and later led its evolution and redesign. Today it works as a video-first media hub: news and research, guides, expert insights, podcasts (Progress in Process, Human Journeys), personal stories and a weekly newsletter, MindShift 101, alongside tools such as self-checks that take under 7 minutes, a Psychedelic Therapy Legality Map and a preparation workbook.",
     problem: "People interested in mental health and psychedelic therapy struggle to navigate a large volume of conflicting information: whom to trust, where to start, what kind of support fits them, and how safe, private and qualified the available specialists are. As the platform grew, the same problem appeared inside the product itself: more content, more navigation, and a visual structure that no longer matched what users needed.",
     solution: "Stage one: unify content, self-assessments and a provider marketplace into one coherent experience. Stage two: simplify the information architecture, make CTAs and quizzes relevant to the context a user is in, and shorten the path from learning about a topic to finding the right specialist.",
     stages: [
@@ -111,6 +114,15 @@ const RAW_PROJECTS: Project[] = [
       { label: "Provider profile views per session", value: "2% → 8%" },
       { label: "Sessions in 3–6 months", value: "+22%" },
     ],
+    scale: [
+      { label: "Newsletter subscribers", value: "4k+" },
+      { label: "Social followers", value: "9.5k+" },
+      { label: "Monthly social impressions", value: "120K+" },
+      { label: "Engagement rate on social media", value: "12%" },
+      { label: "Expert collaborations", value: "80+" },
+      { label: "Podcast listeners", value: "500+" },
+    ],
+    scaleSource: "States of Mind Media & Partnership Kit 2026",
   },
   {
     id: "psystandard",
