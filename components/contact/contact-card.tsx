@@ -1,4 +1,4 @@
-import { Mail, Send } from "lucide-react";
+import { Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -50,11 +50,6 @@ export function ContactCard(): ReactNode {
                     href="https://www.linkedin.com/in/iryna-mikheyenka-1b00a3207/"
                     label="LinkedIn"
                     imageSrc="/linkedin.svg"
-                  />
-                  <SocialIcon
-                    href="https://t.me/iri_mikheyenka"
-                    label="Telegram"
-                    lucideIcon={Send}
                   />
                 </div>
                 <div className="flex flex-col items-center gap-1 text-center">
