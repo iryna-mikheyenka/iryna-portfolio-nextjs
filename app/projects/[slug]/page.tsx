@@ -69,6 +69,9 @@ export default async function ProjectPage({
   }
 
   const Icon = project.icon;
+  const index = PROJECTS.findIndex((p) => p.id === project.id);
+  const nextProject =
+    PROJECTS.length > 1 ? PROJECTS[(index + 1) % PROJECTS.length] : undefined;
 
   return (
     <main id="main-content" className="flex flex-1 flex-col">
@@ -184,25 +187,25 @@ export default async function ProjectPage({
           </div>
 
           {/* Problem / Solution */}
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Panel>
-              <p className="mb-3 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
-                Problem
-              </p>
-              <ScrollText
-                text={project.problem}
-                className="text-[15px] leading-[1.6] tracking-tight text-foreground"
-              />
-            </Panel>
-            <Panel>
-              <p className="mb-3 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
-                Solution
-              </p>
-              <ScrollText
-                text={project.solution}
-                className="text-[15px] leading-[1.6] tracking-tight text-foreground"
-              />
-            </Panel>
+          <div className="mt-10 flex flex-col gap-4">
+            {(
+              [
+                ["Problem", project.problem],
+                ["Solution", project.solution],
+              ] as const
+            ).map(([label, text]) => (
+              <Panel key={label}>
+                <div className="flex flex-col gap-3 sm:flex-row sm:gap-8">
+                  <p className="text-[13px] font-semibold tracking-tight text-foreground/50 uppercase sm:w-24 sm:shrink-0 sm:pt-[3px]">
+                    {label}
+                  </p>
+                  <ScrollText
+                    text={text}
+                    className="flex-1 text-[15px] leading-[1.65] tracking-tight text-foreground"
+                  />
+                </div>
+              </Panel>
+            ))}
           </div>
 
 
@@ -362,6 +365,47 @@ export default async function ProjectPage({
 
         </FadeIn>
       </section>
+
+      {nextProject ? (
+        <section className="mx-auto w-full max-w-160 px-6 pb-16 sm:px-10 sm:pb-20">
+          <Reveal>
+            <p className="mb-4 text-[13px] font-semibold tracking-tight text-foreground/50 uppercase">
+              Next project
+            </p>
+            <Link
+              href={`/projects/${nextProject.id}`}
+              className="focus-ring group border-foreground/8 hover:border-foreground/15 bg-background flex flex-col gap-5 rounded-3xl border p-3 transition-colors duration-500 sm:flex-row sm:items-center sm:gap-6 sm:p-3.5"
+            >
+              <div className="ring-foreground/5 relative aspect-4/3 w-full shrink-0 overflow-hidden rounded-2xl bg-foreground/5 ring-1 sm:w-56">
+                <div className="absolute inset-0 transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:scale-[1.06]">
+                  <Image
+                    src={nextProject.image}
+                    alt={nextProject.imageAlt}
+                    fill
+                    sizes="(min-width: 640px) 224px, 100vw"
+                    className="object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col gap-2 px-1 pb-1 sm:py-2 sm:pr-4">
+                <span className="text-sm font-medium tracking-tight text-foreground/60">
+                  {nextProject.iconLabel}
+                </span>
+                <h2 className="text-balance text-[19px] leading-[1.2] font-medium tracking-tight text-foreground sm:text-[21px]">
+                  {nb(nextProject.title)}
+                </h2>
+                <span className="mt-1 inline-flex items-center gap-1.5 text-[13px] font-medium tracking-tight text-foreground/70 transition-colors duration-500 group-hover:text-foreground">
+                  View project
+                  <ArrowUpRight
+                    className="h-3.5 w-3.5 transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                  />
+                </span>
+              </div>
+            </Link>
+          </Reveal>
+        </section>
+      ) : null}
 
       <ContactCard />
       <div className="h-12 sm:h-16" />
