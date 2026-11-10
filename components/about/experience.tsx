@@ -14,9 +14,9 @@ type Entry = {
 
 const ENTRIES: Entry[] = [
   {
-    company: "Pink Elephant Group",
+    company: "Pink Elephant",
     role: "Senior Product Designer",
-    period: "Mar 2025 \u2013 Present",
+    period: "Dec 2024 \u2013 Present",
     place: "Remote",
     projects: "States of Mind, PsyStandard, Mirari (mental health, education and provider discovery platforms)",
     brand: "#5b6ee1",
@@ -30,16 +30,6 @@ const ENTRIES: Entry[] = [
       "Cut the provider verification cycle from 7 to 2 days; verified providers grew from 220 to 500+ in 14 days.",
       "Worked as the only designer on the team: defended design decisions with stakeholders and ran design reviews of features in production.",
       "Introduced AI-assisted workflows: ~30% less time on analytics and research, 20% less development scope churn.",
-    ],
-  },
-  {
-    company: "AmA Invest",
-    role: "Senior Product Designer",
-    period: "Dec 2024 – Feb 2025",
-    place: "Remote",
-    brand: "#b6e000",
-    bullets: [
-      "Pink Elephant later spun off from AmA Invest, and I moved with the product.",
     ],
   },
   {
