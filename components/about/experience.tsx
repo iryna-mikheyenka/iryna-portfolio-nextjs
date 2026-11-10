@@ -2,6 +2,31 @@ import type { ReactNode } from "react";
 
 import { nb } from "@/lib/nbsp";
 
+const LINKS: Record<string, string> = {
+  Momoboard: "https://momoboard.com/",
+  Clevmate: "https://clevmate.com/",
+};
+
+function withLinks(text: string): ReactNode {
+  const names = Object.keys(LINKS).join("|");
+  return text.split(new RegExp(`(${names})`)).map((part, i) => {
+    const href = LINKS[part];
+    return href ? (
+      <a
+        key={i}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-foreground decoration-foreground/30 hover:decoration-foreground underline underline-offset-4 transition-colors duration-300"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    );
+  });
+}
+
 type Entry = {
   company: string;
   role: string;
@@ -135,7 +160,7 @@ export function Experience(): ReactNode {
               ) : null}
               <ul className="text-foreground/75 mt-3 list-disc space-y-2 pl-5 text-[15px] leading-[1.6] tracking-tight sm:text-[16px]">
                 {entry.bullets.map((b) => (
-                  <li key={b}>{nb(b)}</li>
+                  <li key={b}>{withLinks(nb(b))}</li>
                 ))}
               </ul>
             </div>
